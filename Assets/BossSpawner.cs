@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossSpawner : MonsterSpawner
+public class BossSpawner : MonoBehaviour
 {
     public GameObject bossMonsterPrefab;
     public float bossSpawnDelay = 100f;
@@ -24,10 +24,10 @@ public class BossSpawner : MonsterSpawner
     {
         float randomX = Random.Range(0f, Screen.width);
 
-        float screenHeight = Camera.main.orthographicSize * 2f;
-        float randomY = screenHeight;
+        float positionY = Screen.height;
+        
 
-        Vector3 spawnPosition = Camera.main.ScreenToWorldPoint(new Vector3(randomX, randomY, 0f));
+        Vector3 spawnPosition = Camera.main.ScreenToWorldPoint(new Vector3(randomX, positionY, 0f));
 
         Instantiate(bossMonsterPrefab, spawnPosition, Quaternion.identity);
     }

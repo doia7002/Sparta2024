@@ -16,12 +16,12 @@ public class MonsterSpawner : MonoBehaviour
     void SpawnMonster()
     {
         float randomX1 = Random.Range(0f, Screen.width);
-        float y = Camera.main.orthographicSize * 2f;
-        Vector3 spawnPosition1 = Camera.main.ScreenToWorldPoint(new Vector3(randomX1, y, 0f));
+        float positionY = Screen.height;
+        Vector3 spawnPosition1 = Camera.main.ScreenToWorldPoint(new Vector3(randomX1, positionY, 0f));
         Instantiate(monsterPrefab, spawnPosition1, Quaternion.identity);
 
         float randomX2 = Random.Range(0f, Screen.width);
-        Vector3 spawnPosition2 = Camera.main.ScreenToWorldPoint(new Vector3(randomX2, y, 0f));
+        Vector3 spawnPosition2 = Camera.main.ScreenToWorldPoint(new Vector3(randomX2, positionY, 0f));
         Instantiate(monsterPrefab2, spawnPosition2, Quaternion.identity);
     }
 }
