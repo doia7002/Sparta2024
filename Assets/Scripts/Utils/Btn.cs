@@ -1,30 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Btn : MonoBehaviour
 {
     public void RetryGame()
     {
-        GameManager.instance.Retry1();
+        GameManager.Instance.Retry1();
     }
     public void RetryGame2()
     {
-        GameManager.instance.Retry2();
+        GameManager.Instance.Retry2();
     }
 
     public void ExitGame()
     {
-        GameManager.instance.Exit();
+        GameManager.Instance.Exit();
     }
 
     public void ResumeGame()
     {
-        GameManager.instance.Resume();
+        GameManager.Instance.Resume();
     }
 
     public void NextGame()
     {
-        GameManager.instance.NextGame();
+        GameManager.Instance.NextGame();
     }
 }
