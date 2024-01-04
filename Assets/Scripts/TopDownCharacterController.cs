@@ -21,7 +21,8 @@ public class TopDownCharacterController : MonoBehaviour
     protected virtual void Update()
     {
         HandleAttackDelay();
-        Destroybullets();
+        
+        
     }
 
     private void HandleAttackDelay()
@@ -37,17 +38,7 @@ public class TopDownCharacterController : MonoBehaviour
             CallAttackEvent();
         }
     }
-    private void Destroybullets()
-    { 
-        if(UsingItem) 
-        {
-            foreach (GameObject bullet in GameObject.FindGameObjectsWithTag("Bullet"))
-            {   
-             Destroy(bullet);
-                
-            }
-        }
-    }
+    
 
     public void CallAttackEvent()
     { 
