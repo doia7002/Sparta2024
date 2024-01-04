@@ -6,11 +6,7 @@ using UnityEngine;
 
 public class TopDownCharacterController : MonoBehaviour
 {
-    public event Action<Vector2> OnMoveEvent;
-    public void CallMoveEvent(Vector2 direction)
-    {
-        OnMoveEvent?.Invoke(direction);
-    }
+    public event Action<Vector2> OnMoveEvent;    
     public event Action OnAttackEvent;
     public event Action OnItemEvent;
 
@@ -38,8 +34,10 @@ public class TopDownCharacterController : MonoBehaviour
             CallAttackEvent();
         }
     }
-    
-
+    public void CallMoveEvent(Vector2 direction)
+    {
+        OnMoveEvent?.Invoke(direction);
+    }
     public void CallAttackEvent()
     { 
         OnAttackEvent?.Invoke();

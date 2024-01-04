@@ -1,0 +1,34 @@
+{
+    "name": "Sprite Change",
+    "maps": [
+        {
+            "name": "Change",
+            "id": "47655239-289c-4ed5-8026-9a1c09d8e4a9",
+            "actions": [
+                {
+                    "name": "MousePos",
+                    "type": "Value",
+                    "id": "cbe7740a-f0d5-4579-a6bb-eec0482f635b",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "90c0e08c-cc22-4481-bb3b-f26de0c15eee",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MousePos",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
