@@ -6,10 +6,7 @@ using UnityEngine;
 public class TopDownShooting : MonoBehaviour
 {
     private TopDownCharacterController _contoller;
-
     [SerializeField] private Transform projectileSpawnPosition;
-    private Vector2 _aimDirection = Vector2.up;
-
     public GameObject testPrefab;
 
     private void Awake()
@@ -20,16 +17,15 @@ public class TopDownShooting : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _contoller.OnAttackEvent += OnShoot;
+        _contoller.OnAttackEvent += CreateProjectile;
         
     }
-    private void OnShoot()
-    {
-        CreateProjectile();
-    }
-
     private void CreateProjectile()
     {
+        Vector2 sqawnPosition = projectileSpawnPosition.position;
+        sqawnPosition.y = 0;
         Instantiate(testPrefab, projectileSpawnPosition.position, Quaternion.identity);
     }
+
+   
 }

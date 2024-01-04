@@ -27,27 +27,12 @@ public class PlayerInputController : TopDownCharacterController
     public void OnItem(InputValue value) 
     {
         Debug.Log("OnItem"+value.ToString());
+        UsingItem = value.isPressed;
     }
     public void Start()
     {
         
     }
-    public void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Escape)) 
-        {
-            Pause=!Pause;
-        }
-        if(Pause) 
-        { 
-            Time.timeScale = 0;
-            Debug.Log("paused!");
-        }
-        else 
-        { 
-            Time.timeScale = 1;
-            //Debug.Log("paused out!");
-        }
-    }
+    
 
 }
