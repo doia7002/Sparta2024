@@ -14,7 +14,7 @@ public class AnimationController : Animations
     // Start is called before the first frame update
     void Start()
     {
-        controller.OnAttackEvent += Attacking;
+        //controller.OnAttackEvent += Attacking;
         controller.OnMoveEvent += Move;
     }
 
@@ -23,10 +23,10 @@ public class AnimationController : Animations
         Animator.SetBool(IsWalking, obj.magnitude > .5f);
     }
 
-    private void Attacking(AttackSO obj)
-    {
-        Animator.SetTrigger(Attack);
-    }
+    //private void Attacking(AttackSO obj)
+    //{
+    //    Animator.SetTrigger(Attack);
+    //}
 
     private void Hit()
     {

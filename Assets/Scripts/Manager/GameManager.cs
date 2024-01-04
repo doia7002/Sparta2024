@@ -1,34 +1,37 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject pausePanel;
-    public GameObject endPanel;    
-    public GameObject imageObject;
-    public Text thisScoreTxt;
-    public Text maxScoreTxt;
-    int totalScore;
+    public static GameManager Instance = null;
+
+    public GameObject PausePanel;
+    public GameObject EndPanel;    
+    public GameObject ImageObject;
+    public Text ThisScoreTxt;
+    public Text MaxScoreTxt;
+    int TotalScore;
     public int Life = 3;
-    public static GameManager instance = null;
 
     void Awake()
     {
-        instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        DontDestroyOnLoad(gameObject);
     }
-    
 
-    
     void Start()
     {
-        
+        //Transform parentTransform = GameObject.Find("Canvas").transform;
+        //Transform childTransform = parentTransform.Find("자식객체이름");
     }
-
     
     void Update()
     {
@@ -36,42 +39,44 @@ public class GameManager : MonoBehaviour
         {
             Pause();            
         }
-        
     }
 
-    public void EndPanel()
+    public void ActiveEndPanel()
     {
         Time.timeScale = 0f;
-        endPanel.SetActive(true);
-        /*if ()
-        {
-            endPanel.SetActive(true);
-            imageObject.SetActive(true);
-        }
-        else if ()
-        {
-            endPanel.SetActive(true);
-        }
-        thisScoreTxt.text = totalScore.ToString();
+        EndPanel.SetActive(true);
+
+        //if () // boss dead
+        //{
+        //    EndPanel.SetActive(true);
+        //    ImageObject.SetActive(true);
+        //}
+        //else if () // player dead
+        //{
+        //    EndPanel.SetActive(true);
+        //}
+        
         if (PlayerPrefs.HasKey("bestscore") == false)
         {
-            PlayerPrefs.SetFloat("bestscore", totalScore);
+            PlayerPrefs.SetFloat("bestscore", TotalScore);
         }
         else
         {
-            if (totalScore > PlayerPrefs.GetFloat("bestscore"))
+            if (TotalScore > PlayerPrefs.GetFloat("bestscore"))
             {
-                PlayerPrefs.SetFloat("bestscore", totalScore);
+                PlayerPrefs.SetFloat("bestscore", TotalScore);
             }
         }
+
+        ThisScoreTxt.text = TotalScore.ToString();
         float maxScore = PlayerPrefs.GetFloat("bestscore");
-        maxScoreTxt.text = maxScore.ToString("N2");*/
+        MaxScoreTxt.text = maxScore.ToString("N2");
 
     }
-    public void addScore(int Score)
+    public void AddScore(int Score)
     {
-        totalScore += Score;
-        thisScoreTxt.text = totalScore.ToString();
+        TotalScore += Score;
+        ThisScoreTxt.text = TotalScore.ToString();
     }
 
     public void LoseLife()
@@ -82,7 +87,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-           EndPanel();
+           ActiveEndPanel();
         }
     }
 
@@ -90,17 +95,18 @@ public class GameManager : MonoBehaviour
     void Pause()
     {
         Time.timeScale = 0f;
-        pausePanel.SetActive(true);
-        
+        PausePanel.SetActive(true);
     }
+
     public void NextGame()
     {
         SceneManager.LoadScene("MapScene 1");
     }
+
     public void Resume()
     {
         Time.timeScale = 1f;
-        pausePanel.SetActive(false);
+        PausePanel.SetActive(false);
     }
 
     public void Retry1()
