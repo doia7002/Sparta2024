@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: BossMonster
   m_EditorClassIdentifier: 
   type: 2
-  maxhp: 0
+  maxhp: 300
   speed: 0

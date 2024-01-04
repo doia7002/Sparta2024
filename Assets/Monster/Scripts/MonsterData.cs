@@ -16,7 +16,7 @@ public class MonsterData : ScriptableObject
     [Header("Info")]
     public MonsterType type;
     public int maxhp;
-    public int speed;
+    public float speed;
 
 }
 

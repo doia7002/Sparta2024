@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5432387744292692929}
-  - component: {fileID: 3686297559603331556}
   - component: {fileID: 6003844166182520392}
   - component: {fileID: 345988374315175743}
   - component: {fileID: 4184298032301546211}
@@ -34,21 +33,8 @@ Transform:
   m_Children:
   - {fileID: 4251388083788313467}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3686297559603331556
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5386396714075260687}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89d2ef8066d986146a5c233c44d3df49, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  monsterData: {fileID: 11400000, guid: c7ef8a1d40c7b0144959fe724a5a963b, type: 2}
 --- !u!114 &6003844166182520392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65d2d22f7da30734382156d16c8b94d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  monsterData: {fileID: 11400000, guid: c7ef8a1d40c7b0144959fe724a5a963b, type: 2}
 --- !u!61 &345988374315175743
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -114,14 +101,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5386396714075260687}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
