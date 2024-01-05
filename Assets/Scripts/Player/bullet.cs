@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 
 public class bullet : MonoBehaviour
 {
-    public PlayerSO playerSO;
+    
     public GameObject bulletPrefab;
     
     void Update()
@@ -21,7 +21,7 @@ public class bullet : MonoBehaviour
         if (collision.gameObject.tag=="Enemy")
         {
             Debug.Log("Hit");
-            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(collision.gameObject.transform.forward * playerSO.damage);
+            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(collision.gameObject.transform.forward);
             Destroy(bulletPrefab);
         }
         else

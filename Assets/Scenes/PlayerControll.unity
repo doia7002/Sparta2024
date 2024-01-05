@@ -284,7 +284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1ed6628396bb1e46a609d30fd4f70ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  difficulty: 0
+  level: 0
   PausePanel: {fileID: 0}
   EndPanel: {fileID: 0}
   ImageObject: {fileID: 0}
@@ -570,7 +570,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f45264f74d765654682830893a1d8e81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyBullet: {fileID: 7307223149062210829, guid: fe562e1051619b94283d306f473df93c, type: 3}
+  _enemyBullet: {fileID: 7222428199203891735, guid: fe562e1051619b94283d306f473df93c, type: 3}
 --- !u!114 &1453372483
 MonoBehaviour:
   m_ObjectHideFlags: 0
