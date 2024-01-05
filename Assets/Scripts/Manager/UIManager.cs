@@ -5,14 +5,14 @@ public enum UINumber
     backImage,
     start,
     playerSelect,
-    difficuly
+    level
 }
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
 
-    private GameObject[] _uIs = new GameObject[4];
+    private GameObject[] _UIs = new GameObject[4];
 
     void Awake()
     {
@@ -24,21 +24,26 @@ public class UIManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        DontDestroyOnLoad(gameObject);
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        _uIs[0] = transform.GetChild((int)UINumber.backImage).gameObject;
-        _uIs[1] = transform.GetChild((int)UINumber.start).gameObject;
-        _uIs[2] = transform.GetChild((int)UINumber.playerSelect).gameObject;
-        _uIs[3] = transform.GetChild((int)UINumber.difficuly).gameObject;
+        _UIs[0] = transform.GetChild((int)UINumber.backImage).gameObject;
+        _UIs[1] = transform.GetChild((int)UINumber.start).gameObject;
+        _UIs[2] = transform.GetChild((int)UINumber.playerSelect).gameObject;
+        _UIs[3] = transform.GetChild((int)UINumber.level).gameObject;
     }
 
     public void ChangeUI(UINumber currentUI, UINumber nextUI)
     {
-        _uIs[(int)nextUI].SetActive(true);
-        _uIs[(int)currentUI].SetActive(false);
+        _UIs[(int)nextUI].SetActive(true);
+        _UIs[(int)currentUI].SetActive(false);
+    }
+
+    public void ChangeUI(GameObject gameObject, UINumber nextUI)
+    {
+        _UIs[(int)nextUI].SetActive(true);
+        gameObject.SetActive(false);
     }
 }
