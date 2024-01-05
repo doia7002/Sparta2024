@@ -5,19 +5,28 @@ using UnityEngine.UIElements;
 
 public class bullet : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    public PlayerSO playerSO;
+    public GameObject bulletPrefab;
+    
     void Update()
     {
-        transform.position += new Vector3(0.0f, 0.1f, 0.0f);
+        transform.position += new Vector3(0.0f, 0.3f, 0.0f);
         if (transform.position.y > 10.0f)
         {
             Destroy(gameObject);
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag=="Enemy")
+        {
+            Debug.Log("Hit");
+            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(collision.gameObject.transform.forward * playerSO.damage);
+            Destroy(bulletPrefab);
+        }
+        else
+        {
+            return;
         }
     }
 }
