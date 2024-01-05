@@ -1,25 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class StartBtn : MonoBehaviour
 {
-    public void GameStart()
-    {
-        SceneManager.LoadScene("selectScene");    
-    }
-    
-    
+    private GameObject _selectUI;
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+        _selectUI = transform.root.GetChild(2).gameObject;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SelectPlayer()
     {
-        
+        _selectUI.SetActive(true);
+        transform.root.GetChild(1).gameObject.SetActive(false);
     }
 }
