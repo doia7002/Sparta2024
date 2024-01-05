@@ -29,10 +29,7 @@ public class PlayerInputController : TopDownCharacterController
         Debug.Log("OnItem"+value.ToString());
         UsingItem = value.isPressed;
     }
-    public void Start()
-    {
-        
-    }
+    
     
 
 }

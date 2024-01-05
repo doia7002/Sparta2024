@@ -3,7 +3,11 @@ guid: 2c42698817d750f43ab15059de9b212f
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - RangeMonster: {instanceID: 0}
+  - Player: {instanceID: 0}
+  - Bullet: {instanceID: 0}
+  - monsterBulletData: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

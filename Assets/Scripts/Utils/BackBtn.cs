@@ -1,23 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class BackBtn : MonoBehaviour
 {
-    public void Back()
+    private GameObject _startUI;
+
+    private void Start()
     {
-        SceneManager.LoadScene("StartScene");
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+        _startUI = transform.root.GetChild(1).gameObject;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Back()
     {
-        
+        _startUI.SetActive(true);
+        transform.root.GetChild(2).gameObject.SetActive(false);
     }
 }

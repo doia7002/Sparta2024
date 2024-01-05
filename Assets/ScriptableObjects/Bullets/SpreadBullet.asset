@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24a04334009423c48b875ab8d3752fce, type: 3}
-  m_Name: MeleeMonster
+  m_Script: {fileID: 11500000, guid: 32286d0fd3e381f4abb2c3106d6a966f, type: 3}
+  m_Name: SpreadBullet
   m_EditorClassIdentifier: 
-  type: 0
-  maxhp: 30
-  speed: 1
+  type: 1
+  speed: 2
+  BulletNumber: 3

@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 24a04334009423c48b875ab8d3752fce, type: 3}
-  m_Name: RangeMonster
+  m_Name: MeleeMonster
   m_EditorClassIdentifier: 
-  type: 1
-  maxhp: 20
-  speed: 0.1
+  type: 0
+  maxhp: 10
+  speed: 2
