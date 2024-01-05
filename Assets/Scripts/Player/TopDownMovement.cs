@@ -36,10 +36,5 @@ public class TopDownMovement : MonoBehaviour
 
         _rigidbody.velocity = direction;
     }
-    private void Update()
-    {
-        Vector3 positon = transform.position;
-        positon.x = Mathf.Clamp(positon.x, -2.4f, 2.4f);
-        transform.position=positon;
-    }
+    
 }
