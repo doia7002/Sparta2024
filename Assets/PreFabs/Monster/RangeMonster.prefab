@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5432387744292692929}
   - component: {fileID: 6003844166182520392}
+  - component: {fileID: 2703175197353648367}
+  - component: {fileID: 8996730905465253116}
   - component: {fileID: 345988374315175743}
   - component: {fileID: 4184298032301546211}
   m_Layer: 0
@@ -48,6 +50,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterData: {fileID: 11400000, guid: c7ef8a1d40c7b0144959fe724a5a963b, type: 2}
+--- !u!114 &2703175197353648367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5386396714075260687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c42698817d750f43ab15059de9b212f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RangeMonster: {fileID: 5386396714075260687}
+  Player: {fileID: 6151118530589884863, guid: 05cc356ff7ea0fc40861745fa2917d98, type: 3}
+  Bullet: {fileID: 7307223149062210829, guid: fe562e1051619b94283d306f473df93c, type: 3}
+  monsterBulletData: {fileID: 11400000, guid: 6d4e5a4604c312f489edd5b06291976e, type: 2}
+--- !u!114 &8996730905465253116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5386396714075260687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d316d45882d49384098647316fcb0507, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 3
 --- !u!61 &345988374315175743
 BoxCollider2D:
   m_ObjectHideFlags: 0
