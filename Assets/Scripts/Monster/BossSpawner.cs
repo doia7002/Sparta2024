@@ -14,7 +14,6 @@ public class BossSpawner : MonoBehaviour
    
     void StopSpawningBoss()
     {
-        // InvokeRepeating¿ª ∏ÿ√„
         CancelInvoke("SpawnMonster");
 
         SpawnBossMonster();
