@@ -23,7 +23,7 @@ public class TopDownShooting : MonoBehaviour
     private void CreateProjectile()
     {
         Vector2 sqawnPosition = projectileSpawnPosition.position;
-        sqawnPosition.y = 0;
+        sqawnPosition.y = 40;
         Instantiate(testPrefab, projectileSpawnPosition.position, Quaternion.identity);
     }
 

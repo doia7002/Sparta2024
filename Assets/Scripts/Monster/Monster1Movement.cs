@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Monster1Movement : MonoBehaviour
 {
-    public MonsterData monsterData;
+    public MonsterData monsterData;   
 
     void Update()
     {
-        transform.Translate(Vector3.down * monsterData.speed * Time.deltaTime);
+        transform.Translate(Vector2.down * monsterData.speed * Time.deltaTime);
 
         if (transform.position.y < -10f)
         {

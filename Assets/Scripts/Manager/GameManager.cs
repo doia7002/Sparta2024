@@ -1,22 +1,26 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using System.Collections;
+
+public enum Level
+{
+    basic = 1,
+    standard,
+    challenge
+}
 
 public class GameManager : MonoBehaviour
 {
-    public Difficulty difficulty;
-    public float ItemDropChance = 0.1f;
-    public float ItemMoveSpeed = 1f; 
-    public float ItemDuration = 5f; 
+    public Level level;
     public static GameManager Instance;
-    public GameObject ItemPrefab;
+
     public GameObject PausePanel;
     public GameObject EndPanel;    
     public GameObject ImageObject;
     public Text ThisScoreTxt;
     public Text MaxScoreTxt;
-    int TotalScore;    
+    int TotalScore;
+    public int Life = 3;
 
     void Awake()
     {
@@ -30,15 +34,13 @@ public class GameManager : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
 
-        difficulty = Difficulty.basic;
+        level = Level.basic;
     }
 
     void Start()
     {
         //Transform parentTransform = GameObject.Find("Canvas").transform;
         //Transform childTransform = parentTransform.Find("자식객체이름");
-        GameObject[] boss = GameObject.FindGameObjectsWithTag("Boss");
-        GameObject[] player = GameObject.FindGameObjectsWithTag("Player");
     }
     
     void Update()
@@ -49,45 +51,21 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void CreateItem(Vector3 position)
-    {
-        
-        if (Random.value <= ItemDropChance && ItemPrefab != null)
-        {
-            GameObject newItem = Instantiate(ItemPrefab, position, Quaternion.identity);
-
-            
-            StartCoroutine(MoveItem(newItem));
-
-            
-            Destroy(newItem, ItemDuration);
-        }
-    }
-    IEnumerator MoveItem(GameObject item)
-    {
-        while (item != null)
-        {
-            // 아이템을 아래로 이동
-            item.transform.Translate(Vector3.down * ItemMoveSpeed * Time.deltaTime);
-            yield return null;
-        }
-    }
-
     public void ActiveEndPanel()
     {
         Time.timeScale = 0f;
         EndPanel.SetActive(true);
 
-        if (GameObject.FindGameObjectWithTag("Boss") == null) // boss dead
-        {
-            EndPanel.SetActive(true);
-            ImageObject.SetActive(true);
-        }
-        else if (GameObject.FindGameObjectWithTag("Player") == null) // player dead
-        {
-            EndPanel.SetActive(true);
-        }
-
+        //if () // boss dead
+        //{
+        //    EndPanel.SetActive(true);
+        //    ImageObject.SetActive(true);
+        //}
+        //else if () // player dead
+        //{
+        //    EndPanel.SetActive(true);
+        //}
+        
         if (PlayerPrefs.HasKey("bestscore") == false)
         {
             PlayerPrefs.SetFloat("bestscore", TotalScore);
@@ -103,16 +81,25 @@ public class GameManager : MonoBehaviour
         ThisScoreTxt.text = TotalScore.ToString();
         float maxScore = PlayerPrefs.GetFloat("bestscore");
         MaxScoreTxt.text = maxScore.ToString("N2");
-
     }
+
     public void AddScore(int Score)
     {
         TotalScore += Score;
         ThisScoreTxt.text = TotalScore.ToString();
     }
 
-    
-
+    public void LoseLife()
+    {
+        if (Life > 0)
+        {
+            Life--;
+        }
+        else
+        {
+           ActiveEndPanel();
+        }
+    }
 
     void Pause()
     {
@@ -136,6 +123,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("MapScene");
         Resume();
     }
+
     public void Retry2()
     {
         SceneManager.LoadScene("MapScene 1");
@@ -147,28 +135,19 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("SampleScene");
     }
 
-    public enum Difficulty
-    {
-        basic =1,
-        standard,
-        challenge
-    }   
-
     public void ChooseDifficulty()
     {
-        if(difficulty == Difficulty.basic)
+        if(level == Level.basic)
         {
             //basic씬 선택해서 로드
         }
-        else if(difficulty == Difficulty.standard)
+        else if(level == Level.standard)
         {
             // normal씬 선택해서 로드
         }
-        else if (difficulty == Difficulty.challenge)
+        else if (level == Level.challenge)
         {
             //hard씬 선택해서 로드
         }
-       
     }
-   
 }

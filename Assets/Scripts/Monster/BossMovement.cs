@@ -4,7 +4,7 @@ using UnityEngine;
 public class BossMovement : MonoBehaviour
 {
     public float moveSpeed = 2f;
-    private Vector3 tagetPosition;
+    private Vector2 tagetPosition;
     void Start()
     {
         StartCoroutine(MoveBoss());
@@ -16,9 +16,9 @@ public class BossMovement : MonoBehaviour
         {
             float bossX = (float)Screen.width / 2f;
             float bossY = (float)(Screen.height * 0.8f);
-            tagetPosition = Camera.main.ScreenToWorldPoint(new Vector3(bossX,bossY));
+            tagetPosition = Camera.main.ScreenToWorldPoint(new Vector2(bossX,bossY));
 
-            transform.position = Vector3.Lerp(transform.position,tagetPosition,moveSpeed * Time.deltaTime);
+            transform.position = Vector2.Lerp(transform.position,tagetPosition,moveSpeed * Time.deltaTime);
 
             yield return new WaitForSeconds(0.1f);
         }
