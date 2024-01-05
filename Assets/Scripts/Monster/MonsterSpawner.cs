@@ -1,27 +1,39 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MonsterSpawner : MonoBehaviour
 {
     public GameObject monsterPrefab;
     public GameObject monsterPrefab2;
-    public float spawnInterval = 3f; 
+    public float spawnInterval = 3f;
+    private int spawnCount = 0;
 
     void Start()
     {
-        InvokeRepeating("SpawnMonster", 0f, spawnInterval);
+        StartCoroutine(SpawnMonsterRepeatedly());
+    }
+
+    IEnumerator SpawnMonsterRepeatedly()
+    {
+        while (true)
+        {
+            SpawnMonster();
+            yield return new WaitForSeconds(spawnInterval);
+            spawnCount++;
+            if (spawnCount > 3)
+                break;
+        }
     }
 
     void SpawnMonster()
     {
         float randomX1 = Random.Range(0f, Screen.width);
         float positionY = Screen.height;
-        Vector3 spawnPosition1 = Camera.main.ScreenToWorldPoint(new Vector3(randomX1, positionY, 0f));
+        Vector2 spawnPosition1 = Camera.main.ScreenToWorldPoint(new Vector2(randomX1, positionY));
         Instantiate(monsterPrefab, spawnPosition1, Quaternion.identity);
 
         float randomX2 = Random.Range(0f, Screen.width);
-        Vector3 spawnPosition2 = Camera.main.ScreenToWorldPoint(new Vector3(randomX2, positionY, 0f));
+        Vector2 spawnPosition2 = Camera.main.ScreenToWorldPoint(new Vector2(randomX2, positionY));
         Instantiate(monsterPrefab2, spawnPosition2, Quaternion.identity);
     }
 }

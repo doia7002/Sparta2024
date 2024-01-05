@@ -13,9 +13,8 @@ public class TopDownCharacterController : MonoBehaviour
     private float _timeSinceLastAttack = float.MaxValue;
     protected bool IsAttacking { get; set; }
     protected bool UsingItem { get; set; }
-
     public GameObject _enemyBullet;
-
+    
     protected virtual void Update()
     {
         HandleAttackDelay();
@@ -69,7 +68,7 @@ public class TopDownCharacterController : MonoBehaviour
     {
         OnItemEvent?.Invoke();
     }
-
+    
 
 
 }
