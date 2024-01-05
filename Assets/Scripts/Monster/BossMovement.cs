@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BossMovement : MonoBehaviour
@@ -8,18 +7,18 @@ public class BossMovement : MonoBehaviour
     private Vector3 tagetPosition;
     void Start()
     {
-        StartCoroutine(MoveDown());
+        StartCoroutine(MoveBoss());
     }
 
-    IEnumerator MoveDown()
+    IEnumerator MoveBoss()
     {
         while (true)
         {
-            float bossX = Screen.width / 2;
-            float bossY = (float)(Screen.height * 0.8);
+            float bossX = (float)Screen.width / 2f;
+            float bossY = (float)(Screen.height * 0.8f);
             tagetPosition = Camera.main.ScreenToWorldPoint(new Vector3(bossX,bossY));
-            
-            transform.Translate(tagetPosition * moveSpeed * Time.deltaTime);
+
+            transform.position = Vector3.Lerp(transform.position,tagetPosition,moveSpeed * Time.deltaTime);
 
             yield return new WaitForSeconds(0.1f);
         }
