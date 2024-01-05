@@ -13,8 +13,5 @@ MonoBehaviour:
   m_Name: SpreadBullet
   m_EditorClassIdentifier: 
   type: 1
-  speed: 1
+  speed: 2
   BulletNumber: 3
-  startAngle: -45
-  angleIncrement: 30
-  prefab: {fileID: 7307223149062210829, guid: e9fdcfc2da1e2f6499cfa60d81d486cd, type: 3}

@@ -6,11 +6,6 @@ public class Monster : MonoBehaviour
 
     private int currentHp;
     
-    private void Update()
-    {
-       
-    }
-
     private void Start()
     {
         currentHp = monsterData.maxhp;
@@ -22,7 +17,7 @@ public class Monster : MonoBehaviour
         if (collision.gameObject.tag == "bullet") //캐릭터 총알을 태그처리하면됨
         {
             Destroy(collision.gameObject);
-            TakeDamage(10); // 10이 캐릭터 공격력이라 생각
+            TakeDamage(10); // 10이 캐릭터SO 공격력 넣기
         }
     }
 
