@@ -4,7 +4,8 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance = null;
+    public Difficulty difficulty;
+    public static GameManager Instance;
 
     public GameObject PausePanel;
     public GameObject EndPanel;    
@@ -25,6 +26,8 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
         DontDestroyOnLoad(gameObject);
+
+        difficulty = Difficulty.basic;
     }
 
     void Start()
@@ -124,4 +127,29 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("SampleScene");
     }
+
+    public enum Difficulty
+    {
+        basic =1,
+        standard,
+        challenge
+    }   
+
+    public void ChooseDifficulty()
+    {
+        if(difficulty == Difficulty.basic)
+        {
+            //basic씬 선택해서 로드
+        }
+        else if(difficulty == Difficulty.standard)
+        {
+            // normal씬 선택해서 로드
+        }
+        else if (difficulty == Difficulty.challenge)
+        {
+            //hard씬 선택해서 로드
+        }
+       
+    }
+   
 }

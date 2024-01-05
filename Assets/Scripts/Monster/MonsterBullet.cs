@@ -6,58 +6,50 @@ using UnityEngine;
 
 public class MonsterBullet : MonoBehaviour
 {
-
+    public GameObject RangeMonster;
+    public GameObject Player;
+    public GameObject Bullet;
     public MonsterBulletData monsterBulletData;
-    public MonsterBulletType monsterBulletType;
-    public GameObject NormalBullet;
-    public GameObject SpreadBullet;
-    
-    
 
+    private Transform _monsterTransform;
+    private Transform _playerTransform;
+        
+    
     private void Start()
     {
-        
+      GameManager.Difficulty difficulty = GameManager.Instance.difficulty;
+
+        int startDelay = 5 - (int)difficulty;
+        int endDelay = 3 - (int)difficulty;
+
+        _monsterTransform = RangeMonster.GetComponent<Transform>();
+        _playerTransform = Player.GetComponent<Transform>();
+        InvokeRepeating("ShootBullet", startDelay, endDelay);
     }
 
-    void SpawnBullets()
+    void makeBullet()
     {
-        for (int i = 0; i < monsterBulletData.BulletNumber; i++)
-        {
-            CreateBullet();
-        }
+        float x = _monsterTransform.position.x;
+        float y = _monsterTransform.position.y - 2.0f;
+        Instantiate(Bullet, new Vector3(x, y, 0), Quaternion.identity);
     }
 
-    void CreateBullet()
+   void BulletVector()
     {
-        if (monsterBulletData.type == MonsterBulletType.Normal)
-        {
-            GameObject bullet = Instantiate(NormalBullet, new Vector3(0f, 0f, 0f), Quaternion.identity);
-            
-            
-        }
-        else if(monsterBulletData.type == MonsterBulletType.Spread)
-        {
-            GameObject bullet = Instantiate(SpreadBullet, new Vector3(0.5f, 0.5f, 0f), Quaternion.identity);
+        Vector3 direction = (_playerTransform.position - _monsterTransform.position).normalized;
+        float speed = monsterBulletData.speed;
 
-        }
-        
+        GameObject bullet = Instantiate(Bullet, _monsterTransform.position, Quaternion.identity);
+        bullet.GetComponent<Rigidbody2D>().velocity = direction * speed;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    void ShootBullet()
     {
-        // 몬스터 총알과 캐릭터가 충돌했을때 코드
-        if (collision.gameObject.tag == "Player") //캐릭터에 플레이어 태그넣기
-        {
-            Destroy(collision.gameObject);            
-        }
+        makeBullet();
+        BulletVector();
     }
 
-
-
-
-
-
-
+ 
 
 
 
