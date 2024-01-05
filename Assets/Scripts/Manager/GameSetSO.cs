@@ -10,13 +10,16 @@ public enum PlayerType
     Taeseong
 }
 
-[CreateAssetMenu(fileName = "Player", menuName = "PlayerChoice")]
-public class PlayerSO : ScriptableObject
+[CreateAssetMenu(fileName = "GameSet", menuName = "PlayerChoice")]
+public class GameSetSO : ScriptableObject
 {
-    [Header("Info")]
+    [Header("Player")]
     public PlayerType Type;
     public string SpriteName;
     public Sprite SpriteImage;
-    public float damage = 10.0f;
+	public float damage = 10;
+
+    [Header("Difficulty")]
+    public Level Level;
 }
 

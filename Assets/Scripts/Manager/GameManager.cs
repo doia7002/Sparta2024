@@ -2,9 +2,16 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+public enum Level
+{
+    basic = 1,
+    standard,
+    challenge
+}
+
 public class GameManager : MonoBehaviour
 {
-    public Difficulty difficulty;
+    public Level level;
     public static GameManager Instance;
 
     public GameObject PausePanel;
@@ -27,7 +34,7 @@ public class GameManager : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
 
-        difficulty = Difficulty.basic;
+        level = Level.basic;
     }
 
     void Start()
@@ -74,8 +81,8 @@ public class GameManager : MonoBehaviour
         ThisScoreTxt.text = TotalScore.ToString();
         float maxScore = PlayerPrefs.GetFloat("bestscore");
         MaxScoreTxt.text = maxScore.ToString("N2");
-
     }
+
     public void AddScore(int Score)
     {
         TotalScore += Score;
@@ -93,7 +100,6 @@ public class GameManager : MonoBehaviour
            ActiveEndPanel();
         }
     }
-
 
     void Pause()
     {
@@ -117,6 +123,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("MapScene");
         Resume();
     }
+
     public void Retry2()
     {
         SceneManager.LoadScene("MapScene 1");
@@ -128,28 +135,19 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("SampleScene");
     }
 
-    public enum Difficulty
-    {
-        basic =1,
-        standard,
-        challenge
-    }   
-
     public void ChooseDifficulty()
     {
-        if(difficulty == Difficulty.basic)
+        if(level == Level.basic)
         {
             //basic씬 선택해서 로드
         }
-        else if(difficulty == Difficulty.standard)
+        else if(level == Level.standard)
         {
             // normal씬 선택해서 로드
         }
-        else if (difficulty == Difficulty.challenge)
+        else if (level == Level.challenge)
         {
             //hard씬 선택해서 로드
         }
-       
     }
-   
 }
