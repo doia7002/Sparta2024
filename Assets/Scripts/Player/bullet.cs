@@ -6,10 +6,11 @@ using UnityEngine.UIElements;
 public class bullet : MonoBehaviour
 {
     public PlayerSO playerSO;
+    public GameObject bulletPrefab;
     
     void Update()
     {
-        transform.position += new Vector3(0.0f, 0.1f, 0.0f);
+        transform.position += new Vector3(0.0f, 0.3f, 0.0f);
         if (transform.position.y > 10.0f)
         {
             Destroy(gameObject);
@@ -17,12 +18,13 @@ public class bullet : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.GetComponent<Rigidbody2D>() != null)
+        if (collision.gameObject.tag=="Enemy")
         {
             Debug.Log("Hit");
             collision.gameObject.GetComponent<Rigidbody2D>().AddForce(collision.gameObject.transform.forward * playerSO.damage);
+            Destroy(bulletPrefab);
         }
-        else if (collision.gameObject.GetComponent<Collider2D>()!=null&&collision.gameObject.GetComponent<Collider2D>().isTrigger)
+        else
         {
             return;
         }
