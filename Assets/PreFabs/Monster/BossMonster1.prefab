@@ -9,12 +9,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3184315418146309679}
-  - component: {fileID: 2496493510951904593}
   - component: {fileID: 3646690286982284463}
   - component: {fileID: 5692410994235012337}
-  m_Layer: 0
+  - component: {fileID: 2496493510951904593}
+  - component: {fileID: 3550619532051140535}
+  - component: {fileID: -1282183560577123936}
+  m_Layer: 7
   m_Name: BossMonster1
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35,19 +37,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2496493510951904593
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2601794632076691616}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65d2d22f7da30734382156d16c8b94d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  monsterData: {fileID: 11400000, guid: a21215351f9b4a448b5c068250de6a48, type: 2}
 --- !u!50 &3646690286982284463
 Rigidbody2D:
   serializedVersion: 4
@@ -104,7 +93,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -120,6 +109,47 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 6, y: 6}
   m_EdgeRadius: 0
+--- !u!114 &2496493510951904593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2601794632076691616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65d2d22f7da30734382156d16c8b94d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterData: {fileID: 11400000, guid: a21215351f9b4a448b5c068250de6a48, type: 2}
+--- !u!114 &3550619532051140535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2601794632076691616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc49c258f0fef8b4f855319bd8be1adb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 2
+--- !u!114 &-1282183560577123936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2601794632076691616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82e1c651701813c4faf05c5668dd1788, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 7966660917103218758, guid: 18dfc0614cf38c54387ce44d8fd9dd7c, type: 3}
+  bulletSpeed: 10
+  attackInterval: 1
 --- !u!1 &7783541394725709488
 GameObject:
   m_ObjectHideFlags: 0
@@ -130,7 +160,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2336138091079510348}
   - component: {fileID: 455498284126845471}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: fatCat_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

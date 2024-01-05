@@ -18,6 +18,8 @@ public class MonsterBullet : MonoBehaviour
 
     private void Start()
     {
+        Player = GameObject.FindGameObjectWithTag("Player");
+
         Level difficulty = GameManager.Instance.level;
 
         int startDelay = 5 - (int)difficulty;
