@@ -14,11 +14,12 @@ public class TopDownCharacterController : MonoBehaviour
     protected bool IsAttacking { get; set; }
     protected bool UsingItem { get; set; }
 
+    public GameObject _enemyBullet;
+
     protected virtual void Update()
     {
         HandleAttackDelay();
-        
-        
+        ItemUsed();
     }
 
     private void HandleAttackDelay()
@@ -33,7 +34,29 @@ public class TopDownCharacterController : MonoBehaviour
             _timeSinceLastAttack = 0;
             CallAttackEvent();
         }
+        
     }
+    public void ItemUsed()
+    {
+        if (UsingItem)
+        {
+            if (_enemyBullet == true)
+            {
+                GameObject bullet = _enemyBullet;
+                bullet.SetActive(false);
+
+            }
+        }
+        else
+        {
+            if (_enemyBullet != null)
+            {
+                GameObject bullet = _enemyBullet;
+                bullet.SetActive(true);
+            }
+        }
+    }
+    
     public void CallMoveEvent(Vector2 direction)
     {
         OnMoveEvent?.Invoke(direction);
