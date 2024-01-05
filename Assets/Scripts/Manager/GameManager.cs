@@ -1,12 +1,16 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
     public Difficulty difficulty;
+    public float ItemDropChance = 0.1f;
+    public float ItemMoveSpeed = 1f; 
+    public float ItemDuration = 5f; 
     public static GameManager Instance;
-
+    public GameObject ItemPrefab;
     public GameObject PausePanel;
     public GameObject EndPanel;    
     public GameObject ImageObject;
@@ -42,6 +46,30 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Pause();            
+        }
+    }
+
+    public void CreateItem(Vector3 position)
+    {
+        
+        if (Random.value <= ItemDropChance && ItemPrefab != null)
+        {
+            GameObject newItem = Instantiate(ItemPrefab, position, Quaternion.identity);
+
+            
+            StartCoroutine(MoveItem(newItem));
+
+            
+            Destroy(newItem, ItemDuration);
+        }
+    }
+    IEnumerator MoveItem(GameObject item)
+    {
+        while (item != null)
+        {
+            // 아이템을 아래로 이동
+            item.transform.Translate(Vector3.down * ItemMoveSpeed * Time.deltaTime);
+            yield return null;
         }
     }
 
