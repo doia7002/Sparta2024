@@ -78,7 +78,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d316d45882d49384098647316fcb0507, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  monsterData: {fileID: 11400000, guid: c7ef8a1d40c7b0144959fe724a5a963b, type: 2}
 --- !u!61 &345988374315175743
 BoxCollider2D:
   m_ObjectHideFlags: 0

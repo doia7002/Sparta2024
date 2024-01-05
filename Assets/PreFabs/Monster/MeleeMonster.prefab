@@ -217,4 +217,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36e38f6f3001b124d8f06044275064e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  monsterData: {fileID: 11400000, guid: fa4baf04a01bcc84c97deff1f3ab49c1, type: 2}
