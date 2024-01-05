@@ -5,6 +5,7 @@ public class Monster : MonoBehaviour
     public MonsterData monsterData;
 
     private int currentHp;
+    private int score;
     
     private void Start()
     {
@@ -21,7 +22,7 @@ public class Monster : MonoBehaviour
         }
     }
 
-        public void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         currentHp -= damage;
 
@@ -34,6 +35,7 @@ public class Monster : MonoBehaviour
 
     public void Die()
     {
+        GameManager.Instance.AddScore(score);
         Destroy(gameObject);
     }
 

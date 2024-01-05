@@ -12,8 +12,7 @@ public class GameManager : MonoBehaviour
     public GameObject ImageObject;
     public Text ThisScoreTxt;
     public Text MaxScoreTxt;
-    int TotalScore;
-    public int Life = 3;
+    int TotalScore;    
 
     void Awake()
     {
@@ -34,6 +33,8 @@ public class GameManager : MonoBehaviour
     {
         //Transform parentTransform = GameObject.Find("Canvas").transform;
         //Transform childTransform = parentTransform.Find("자식객체이름");
+        GameObject[] boss = GameObject.FindGameObjectsWithTag("Boss");
+        GameObject[] player = GameObject.FindGameObjectsWithTag("Player");
     }
     
     void Update()
@@ -49,16 +50,16 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
         EndPanel.SetActive(true);
 
-        //if () // boss dead
-        //{
-        //    EndPanel.SetActive(true);
-        //    ImageObject.SetActive(true);
-        //}
-        //else if () // player dead
-        //{
-        //    EndPanel.SetActive(true);
-        //}
-        
+        if (GameObject.FindGameObjectWithTag("Boss") == null) // boss dead
+        {
+            EndPanel.SetActive(true);
+            ImageObject.SetActive(true);
+        }
+        else if (GameObject.FindGameObjectWithTag("Player") == null) // player dead
+        {
+            EndPanel.SetActive(true);
+        }
+
         if (PlayerPrefs.HasKey("bestscore") == false)
         {
             PlayerPrefs.SetFloat("bestscore", TotalScore);
@@ -82,17 +83,7 @@ public class GameManager : MonoBehaviour
         ThisScoreTxt.text = TotalScore.ToString();
     }
 
-    public void LoseLife()
-    {
-        if (Life > 0)
-        {
-            Life--;
-        }
-        else
-        {
-           ActiveEndPanel();
-        }
-    }
+    
 
 
     void Pause()

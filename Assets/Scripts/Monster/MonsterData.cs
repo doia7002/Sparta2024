@@ -17,6 +17,7 @@ public class MonsterData : ScriptableObject
     public MonsterType type;
     public int maxhp;
     public float speed;
+    public int score;
 
 }
 
