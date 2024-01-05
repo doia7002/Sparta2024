@@ -13,7 +13,8 @@ public class MonsterBullet : MonoBehaviour
 
     private Transform _monsterTransform;
     private Transform _playerTransform;
-   
+    
+  
 
     private void Start()
     {
