@@ -4,7 +4,7 @@ using UnityEngine;
 public class Monster2Movement : MonoBehaviour
 {
     public float moveSpeed = 3f;
-    private Vector3 targetPosition;
+    private Vector2 targetPosition;
 
     void Start()
     {
@@ -23,7 +23,7 @@ public class Monster2Movement : MonoBehaviour
             float randomX = Random.Range(0f, Screen.width);
             float randomY = Random.Range(Screen.height * 0.7f, Screen.height);
 
-            targetPosition = Camera.main.ScreenToWorldPoint(new Vector3(randomX, randomY, 0f));
+            targetPosition = Camera.main.ScreenToWorldPoint(new Vector2(randomX, randomY));
 
             yield return new WaitForSeconds(2f);
         }
@@ -31,6 +31,6 @@ public class Monster2Movement : MonoBehaviour
 
     void MoveToTarget()
     {
-        transform.position = Vector3.Lerp(transform.position, targetPosition, moveSpeed * Time.deltaTime);
+        transform.position = Vector2.Lerp(transform.position, targetPosition, moveSpeed * Time.deltaTime);
     }
 }

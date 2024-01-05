@@ -8,7 +8,7 @@ public class Monster1Movement : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(Vector3.down * moveSpeed * Time.deltaTime);
+        transform.Translate(Vector2.down * moveSpeed * Time.deltaTime);
 
         if (transform.position.y < -10f)
         {
