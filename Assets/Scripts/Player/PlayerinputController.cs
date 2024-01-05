@@ -6,12 +6,13 @@ using UnityEngine.InputSystem;
 public class PlayerInputController : TopDownCharacterController
 {
     private Camera _camera;
+    public bool Pause { get; set; }
+
     private void Awake()
     {
         _camera = Camera.main;
     }
-    public bool Pause { get; set; }
-
+    
     public void OnMove(InputValue value)
     {
         
@@ -21,15 +22,13 @@ public class PlayerInputController : TopDownCharacterController
 
     public void OnFire(InputValue value)
     {
-        Debug.Log("OnFire" + value.ToString());
+        //Debug.Log("OnFire" + value.ToString());
         IsAttacking = value.isPressed;
     }
+
     public void OnItem(InputValue value) 
     {
-        Debug.Log("OnItem"+value.ToString());
+        //Debug.Log("OnItem"+value.ToString());
         UsingItem = value.isPressed;
     }
-    
-    
-
 }
