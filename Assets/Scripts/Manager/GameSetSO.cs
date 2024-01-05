@@ -17,7 +17,9 @@ public class GameSetSO : ScriptableObject
     public PlayerType Type;
     public string SpriteName;
     public Sprite SpriteImage;
+	public float damage = 10;
 
     [Header("Difficulty")]
     public Level Level;
 }
+

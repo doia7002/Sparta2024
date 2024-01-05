@@ -13,8 +13,5 @@ MonoBehaviour:
   m_Name: NormalBullet
   m_EditorClassIdentifier: 
   type: 0
-  speed: 1
+  speed: 2
   BulletNumber: 1
-  startAngle: 0
-  angleIncrement: 0
-  prefab: {fileID: 7307223149062210829, guid: 7794fe7c7d0894e409be51b54881257e, type: 3}

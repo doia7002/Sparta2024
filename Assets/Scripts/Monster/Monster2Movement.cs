@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Monster2Movement : MonoBehaviour
 {
-    public float moveSpeed = 3f;
+    public MonsterData monsterData;
     private Vector3 targetPosition;
 
     void Start()
@@ -31,6 +31,6 @@ public class Monster2Movement : MonoBehaviour
 
     void MoveToTarget()
     {
-        transform.position = Vector3.Lerp(transform.position, targetPosition, moveSpeed * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position, targetPosition, monsterData.speed * Time.deltaTime);
     }
 }
