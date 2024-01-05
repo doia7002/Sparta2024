@@ -4,6 +4,8 @@ public class BackToStartBtn : MonoBehaviour
 {
     public void Back()
     {
-        UIManager.Instance.ChangeUI(UINumber.playerSelect, UINumber.start);
+        GameObject currentUI = (transform.parent).parent.gameObject;
+
+        UIManager.Instance.ChangeUI(currentUI, UINumber.start);
     }
 }
