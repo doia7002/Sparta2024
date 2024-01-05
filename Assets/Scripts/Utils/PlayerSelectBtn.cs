@@ -13,6 +13,12 @@ public class PlayerSelectBtn : MonoBehaviour
         //Debug.Log("TextMeshPro : " + _spriteName.text);
     }
 
+    public void SelectPlayer()
+    {
+        SetPlayerSO();
+        UIManager.Instance.ChangeUI(UINumber.playerSelect, UINumber.difficuly);
+    }
+
     public void SetPlayerSO()
     {
         Enum.TryParse(_spriteName.text, out PlayerData.Type);
