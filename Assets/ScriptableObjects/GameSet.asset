@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e2e04664a5539f44bdac3816669ad8c, type: 3}
   m_Name: GameSet
   m_EditorClassIdentifier: 
-  Type: 1
+  Type: 0
   SpriteName: Wonjun2
   SpriteImage: {fileID: 21300000, guid: cda65250e7ce42349b3e73f7d074d016, type: 3}
-  DifficultyLevel: 1
+  Damage: 10
+  Level: 1
