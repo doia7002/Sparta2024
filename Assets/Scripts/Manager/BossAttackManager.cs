@@ -13,15 +13,15 @@ public class BossAttackManager : MonoBehaviour
         instance = this;
     }
 
-    public void ShootBullet(Vector2 startPostiion, Vector2 direction, RangedAttackData attackData)
-    {
-        GameObject obj = Instantiate(testObj);
+    //public void ShootBullet(Vector2 startPostiion, Vector2 direction, RangedAttackData attackData)
+    //{
+    //    GameObject obj = Instantiate(testObj);
 
-        obj.transform.position = startPostiion;
-        RangedAttackController attackController = obj.GetComponent<RangedAttackController>();
-        attackController.InitializeAttack(direction, attackData, this);
+    //    obj.transform.position = startPostiion;
+    //    RangedAttackController attackController = obj.GetComponent<RangedAttackController>();
+    //    attackController.InitializeAttack(direction, attackData, this);
 
-        obj.SetActive(true);
-    }
+    //    obj.SetActive(true);
+    //}
 
 }
