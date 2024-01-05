@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 2542793113408298907}
   - component: {fileID: 2180076399878944385}
   - component: {fileID: 5057693745246216668}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Square
-  m_TagString: Bullet
+  m_TagString: PlayerBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,8 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d92c985eff3afa842b8d5e09af5db362, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSO: {fileID: 11400000, guid: 7a21f7598f186cb458e46bdb7150d1f2, type: 2}
-  bulletPrefab: {fileID: 8670046825409717352}
+  GameSetData: {fileID: 0}
+  BulletPrefab: {fileID: 0}
 --- !u!61 &2180076399878944385
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -130,7 +130,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

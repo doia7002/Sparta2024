@@ -39,6 +39,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        //GameObject[] boss = GameObject.FindGameObjectsWithTag("Boss");
+        //GameObject[] player = GameObject.FindGameObjectsWithTag("Player");
         //Transform parentTransform = GameObject.Find("Canvas").transform;
         //Transform childTransform = parentTransform.Find("자식객체이름");
     }
@@ -56,27 +58,27 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
         EndPanel.SetActive(true);
 
-        //if () // boss dead
+        //if (GameObject.FindGameObjectWithTag("Boss") == null) // boss dead
         //{
         //    EndPanel.SetActive(true);
         //    ImageObject.SetActive(true);
         //}
-        //else if () // player dead
+        //else if (GameObject.FindGameObjectWithTag("Player") == null) // player dead
         //{
         //    EndPanel.SetActive(true);
         //}
-        
-        if (PlayerPrefs.HasKey("bestscore") == false)
-        {
-            PlayerPrefs.SetFloat("bestscore", TotalScore);
-        }
-        else
-        {
-            if (TotalScore > PlayerPrefs.GetFloat("bestscore"))
-            {
-                PlayerPrefs.SetFloat("bestscore", TotalScore);
-            }
-        }
+
+        //if (PlayerPrefs.HasKey("bestscore") == false)
+        //{
+        //    PlayerPrefs.SetFloat("bestscore", TotalScore);
+        //}
+        //else
+        //{
+        //    if (TotalScore > PlayerPrefs.GetFloat("bestscore"))
+        //    {
+        //        PlayerPrefs.SetFloat("bestscore", TotalScore);
+        //    }
+        //}
 
         ThisScoreTxt.text = TotalScore.ToString();
         float maxScore = PlayerPrefs.GetFloat("bestscore");

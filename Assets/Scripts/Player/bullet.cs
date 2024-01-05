@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class bullet : MonoBehaviour
 {
     public GameSetSO GameSetData;
-    public GameObject bulletPrefab;
+
+    public GameObject BulletPrefab;
     
     void Update()
     {
@@ -21,8 +19,9 @@ public class bullet : MonoBehaviour
         if (collision.gameObject.tag=="Enemy")
         {
             Debug.Log("Hit");
-            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(collision.gameObject.transform.forward * GameSetData.damage);
-            Destroy(bulletPrefab);
+
+            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(collision.gameObject.transform.forward * GameSetData.Damage);
+            Destroy(BulletPrefab);
         }
         else
         {
