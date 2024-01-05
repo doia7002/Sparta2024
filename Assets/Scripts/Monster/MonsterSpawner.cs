@@ -1,16 +1,28 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MonsterSpawner : MonoBehaviour
 {
     public GameObject monsterPrefab;
     public GameObject monsterPrefab2;
-    public float spawnInterval = 3f; 
+    public float spawnInterval = 3f;
+    private int spawnCount = 0;
 
     void Start()
     {
-        InvokeRepeating("SpawnMonster", 0f, spawnInterval);
+        StartCoroutine(SpawnMonsterRepeatedly());
+    }
+
+    IEnumerator SpawnMonsterRepeatedly()
+    {
+        while (true)
+        {
+            SpawnMonster();
+            yield return new WaitForSeconds(spawnInterval);
+            spawnCount++;
+            if (spawnCount > 3)
+                break;
+        }
     }
 
     void SpawnMonster()
