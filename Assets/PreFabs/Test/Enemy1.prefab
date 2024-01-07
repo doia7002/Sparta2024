@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5090301204705559650
 SpriteRenderer:
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36e38f6f3001b124d8f06044275064e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  monsterData: {fileID: 11400000, guid: fa4baf04a01bcc84c97deff1f3ab49c1, type: 2}
 --- !u!50 &2447845692837583087
 Rigidbody2D:
   serializedVersion: 4
