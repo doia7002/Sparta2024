@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.UIElements;
 using UnityEngine;
 
 
@@ -13,7 +14,8 @@ public class TopDownCharacterController : MonoBehaviour
     private float _timeSinceLastAttack = float.MaxValue;
     protected bool IsAttacking { get; set; }
     protected bool UsingItem { get; set; }
-    public GameObject _enemyBullet;
+    public bool GameObject;
+    
     
     protected virtual void Update()
     {
@@ -35,25 +37,14 @@ public class TopDownCharacterController : MonoBehaviour
         }
         
     }
-    public void ItemUsed()
+    public void ItemUsed()//아이템
     {
         if (UsingItem)
         {
-            if (_enemyBullet == true)
-            {
-                GameObject bullet = _enemyBullet;
-                bullet.SetActive(false);
+            
 
-            }
         }
-        else
-        {
-            if (_enemyBullet != null)
-            {
-                GameObject bullet = _enemyBullet;
-                bullet.SetActive(true);
-            }
-        }
+        
     }
     
     public void CallMoveEvent(Vector2 direction)
@@ -64,7 +55,7 @@ public class TopDownCharacterController : MonoBehaviour
     { 
         OnAttackEvent?.Invoke();
     }
-    public void CallItemEvent()
+    public void CallItemEvent()//아이템
     {
         OnItemEvent?.Invoke();
     }
