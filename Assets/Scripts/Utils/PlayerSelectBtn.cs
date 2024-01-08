@@ -29,6 +29,6 @@ public class PlayerSelectBtn : MonoBehaviour
     {
         Enum.TryParse(_buttonText.text, out GameSetData.Type);
         GameSetData.SpriteName = $"{_buttonText.text}2";
-        GameSetData.SpriteImage = Resources.Load<Sprite>($"Images/{_buttonText.text}2");
+        GameSetData.SpriteImage = Resources.Load<Sprite>($"Images/Player/{_buttonText.text}2");
     }
 }
