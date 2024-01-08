@@ -3392,10 +3392,10 @@ MonoBehaviour:
   level: 0
   PausePanel: {fileID: 1388529888}
   EndPanel: {fileID: 2054264740}
-  ImageObject: {fileID: 1829887606}
+  ImageObject: {fileID: 2826594485640385112, guid: b6e82bc63888f024ab5dbb2773015377, type: 3}
+  ItemPrefab: {fileID: 0}
   ThisScoreTxt: {fileID: 87260277}
   MaxScoreTxt: {fileID: 1260844071}
-  Life: 3
 --- !u!4 &1671451885
 Transform:
   m_ObjectHideFlags: 0

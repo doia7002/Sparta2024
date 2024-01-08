@@ -6,15 +6,18 @@ public class Player : MonoBehaviour
 {
     public GameObject PlayerActive;
 
-    public void IsTriggerEnter2D(Collider2D collider)
-    {
-        if (collider.gameObject.tag == "Enemy")
-        {
-            PlayerActive.SetActive(false);
-            Debug.Log("Damaged");
 
+    public void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.isTrigger)
+        {            
+         PlayerActive.SetActive(false);
+            
+         
         }
+        
 
     }
-    
+
+
 }
