@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Monster : MonoBehaviour
@@ -5,20 +6,48 @@ public class Monster : MonoBehaviour
     public MonsterData monsterData;
 
     private int currentHp;
-    private int score;
+    
     
     private void Start()
     {
         currentHp = monsterData.maxhp;
+        
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    
+
+    private void OnTriggerEnter2D(Collider2D collider )
     {
         // 몬스터와 총알이 충돌했을때 코드
-        if (collision.gameObject.tag == "bullet") //캐릭터 총알을 태그처리하면됨
+        if (collider.gameObject.tag == "PlayerBullet") //캐릭터 총알을 태그처리하면됨
         {
-            Destroy(collision.gameObject);
+            
+            Destroy(collider.gameObject);
             TakeDamage(10); // 10이 캐릭터SO 공격력 넣기
+        }
+
+        
+
+    }
+
+    void OnDestroy()
+    {
+        if (gameObject.CompareTag("Boss"))
+        {
+            GameManager.Instance.AddScore(50);
+        }
+        if (gameObject.CompareTag("Enemy"))
+        {
+            GameManager.Instance.AddScore(10);
+        }
+        
+
+        float dropChance = 1f;
+        float randomValue = Random.value;
+
+        if (randomValue <= dropChance)
+        {
+            GameManager.Instance.SpawnItem(transform.position);
         }
     }
 
@@ -30,13 +59,12 @@ public class Monster : MonoBehaviour
         {
             Die();
         }
-
+        
     }
 
     public void Die()
-    {
+    {       
         
-        GameManager.Instance.AddScore(score);
         Destroy(gameObject);
     }
 

@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -12,15 +13,17 @@ public enum Level
 public class GameManager : MonoBehaviour
 {
     public Level level;
-    public static GameManager Instance;
-
+    public static GameManager Instance;    
     public GameObject PausePanel;
     public GameObject EndPanel;    
     public GameObject ImageObject;
+    public GameObject ItemPrefab;
     public Text ThisScoreTxt;
     public Text MaxScoreTxt;
+    
+    float StartTime;
     int TotalScore;
-    public int Life = 3;
+    
 
     void Awake()
     {
@@ -39,8 +42,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        //GameObject[] boss = GameObject.FindGameObjectsWithTag("Boss");
-        //GameObject[] player = GameObject.FindGameObjectsWithTag("Player");
+        GameObject Boss = GameObject.FindGameObjectWithTag("Boss");
+        GameObject Player = GameObject.FindGameObjectWithTag("Player");
         //Transform parentTransform = GameObject.Find("Canvas").transform;
         //Transform childTransform = parentTransform.Find("자식객체이름");
     }
@@ -51,34 +54,39 @@ public class GameManager : MonoBehaviour
         {
             Pause();            
         }
+        ActiveEndPanel();
     }
-
+    bool HasTenSecondsPassed()
+    {
+        return (Time.time - StartTime) >= 11f; // 게임 시작 후 10초가 지났는지 확인
+    }
     public void ActiveEndPanel()
     {
-        Time.timeScale = 0f;
-        EndPanel.SetActive(true);
+                
 
-        //if (GameObject.FindGameObjectWithTag("Boss") == null) // boss dead
-        //{
-        //    EndPanel.SetActive(true);
-        //    ImageObject.SetActive(true);
-        //}
-        //else if (GameObject.FindGameObjectWithTag("Player") == null) // player dead
-        //{
-        //    EndPanel.SetActive(true);
-        //}
+        if (HasTenSecondsPassed()&&GameObject.FindGameObjectWithTag("Boss")==null) // boss dead
+        {
+            Time.timeScale = 0f;
+            EndPanel.SetActive(true);
+            ImageObject.SetActive(true);
+        }
+        else if (GameObject.FindGameObjectWithTag("Player") == null) // player dead
+        {
+            Time.timeScale = 0f;
+            EndPanel.SetActive(true);
+        }
 
-        //if (PlayerPrefs.HasKey("bestscore") == false)
-        //{
-        //    PlayerPrefs.SetFloat("bestscore", TotalScore);
-        //}
-        //else
-        //{
-        //    if (TotalScore > PlayerPrefs.GetFloat("bestscore"))
-        //    {
-        //        PlayerPrefs.SetFloat("bestscore", TotalScore);
-        //    }
-        //}
+        if (PlayerPrefs.HasKey("bestscore") == false)
+        {
+            PlayerPrefs.SetFloat("bestscore", TotalScore);
+        }
+        else
+        {
+            if (TotalScore > PlayerPrefs.GetFloat("bestscore"))
+            {
+                PlayerPrefs.SetFloat("bestscore", TotalScore);
+            }
+        }
 
         ThisScoreTxt.text = TotalScore.ToString();
         float maxScore = PlayerPrefs.GetFloat("bestscore");
@@ -91,17 +99,16 @@ public class GameManager : MonoBehaviour
         ThisScoreTxt.text = TotalScore.ToString();
     }
 
-    public void LoseLife()
+    public void SpawnItem(Vector3 position)
     {
-        if (Life > 0)
-        {
-            Life--;
-        }
-        else
-        {
-           ActiveEndPanel();
+        if (ItemPrefab != null)
+        {            
+                       
+            GameObject newItem = Instantiate(ItemPrefab, position, Quaternion.identity);
+            
         }
     }
+    
 
     void Pause()
     {
