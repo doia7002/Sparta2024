@@ -38,12 +38,12 @@ public class Monster : MonoBehaviour
         if (gameObject.CompareTag("Boss"))
         {
             GameManager.Instance.StageEnd(DeadCase.bossDead);
-            GameManager.Instance.AddScore(50);
+            GameManager.Instance.AddScore(50 * (int)GameSetData.Level);
         }
 
         if (gameObject.CompareTag("Enemy"))
         {
-            GameManager.Instance.AddScore(10);
+            GameManager.Instance.AddScore(10 * (int)GameSetData.Level);
         }
 
         float dropChance = 1f;
