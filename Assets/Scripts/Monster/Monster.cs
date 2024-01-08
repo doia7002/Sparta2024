@@ -23,20 +23,6 @@ public class Monster : MonoBehaviour
         }
     }
 
-    void OnDestroy()
-    {
-        if (gameObject.CompareTag("Boss"))
-        {
-            GameManager.Instance.StageEnd(DeadCase.bossDead);
-            GameManager.Instance.AddScore(50);
-        }
-
-        if (gameObject.CompareTag("Enemy"))
-        {
-            GameManager.Instance.AddScore(10);
-        }
-    }
-
     public void TakeDamage(int damage)
     {
         currentHp -= damage;
@@ -49,6 +35,17 @@ public class Monster : MonoBehaviour
 
     public void Die()
     {
+        if (gameObject.CompareTag("Boss"))
+        {
+            GameManager.Instance.StageEnd(DeadCase.bossDead);
+            GameManager.Instance.AddScore(50);
+        }
+
+        if (gameObject.CompareTag("Enemy"))
+        {
+            GameManager.Instance.AddScore(10);
+        }
+
         float dropChance = 1f;
         float randomValue = Random.value;
 
