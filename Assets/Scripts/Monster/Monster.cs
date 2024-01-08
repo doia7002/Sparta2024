@@ -34,6 +34,7 @@ public class Monster : MonoBehaviour
     {
         if (gameObject.CompareTag("Boss"))
         {
+            GameManager.Instance.StageEnd(DeadCase.bossDead);
             GameManager.Instance.AddScore(50);
         }
         if (gameObject.CompareTag("Enemy"))

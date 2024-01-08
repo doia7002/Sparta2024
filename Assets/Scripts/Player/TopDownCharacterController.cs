@@ -1,29 +1,26 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
 
 public class TopDownCharacterController : MonoBehaviour
 {
-    public event Action<Vector2> OnMoveEvent;    
+    public event Action<Vector2> OnMoveEvent;
     public event Action OnAttackEvent;
     public event Action OnItemEvent;
+    public event Action OnPauseEvent;
 
     private float _timeSinceLastAttack = float.MaxValue;
     protected bool IsAttacking { get; set; }
     protected bool UsingItem { get; set; }
-    public GameObject _enemyBullet;
+    public GameObject _enemyBullet {  get; set; }
     
     protected virtual void Update()
     {
-        HandleAttackDelay();
-        ItemUsed();
+        HandleAttackDelay();        
     }
 
     private void HandleAttackDelay()
     {
-        if (_timeSinceLastAttack <= 0.2f)    
+        if (_timeSinceLastAttack <= 0.2f)
         {
             _timeSinceLastAttack += Time.deltaTime;
         }
@@ -34,27 +31,7 @@ public class TopDownCharacterController : MonoBehaviour
             CallAttackEvent();
         }
         
-    }
-    public void ItemUsed()
-    {
-        if (UsingItem)
-        {
-            if (_enemyBullet == true)
-            {
-                GameObject bullet = _enemyBullet;
-                bullet.SetActive(false);
-
-            }
-        }
-        else
-        {
-            if (_enemyBullet != null)
-            {
-                GameObject bullet = _enemyBullet;
-                bullet.SetActive(true);
-            }
-        }
-    }
+    }  
     
     public void CallMoveEvent(Vector2 direction)
     {
@@ -68,7 +45,11 @@ public class TopDownCharacterController : MonoBehaviour
     {
         OnItemEvent?.Invoke();
     }
-    
+
+    public void CallPauseEvent()
+    {
+        OnPauseEvent?.Invoke();
+    }
 
 
 }
