@@ -1,6 +1,5 @@
 using UnityEngine;
 
-
 public class ScoreBtn : MonoBehaviour
 {
     public void ScoreBoard()

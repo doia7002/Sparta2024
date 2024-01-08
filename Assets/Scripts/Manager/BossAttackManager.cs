@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BossAttackManager : MonoBehaviour
@@ -23,5 +21,4 @@ public class BossAttackManager : MonoBehaviour
 
     //    obj.SetActive(true);
     //}
-
 }

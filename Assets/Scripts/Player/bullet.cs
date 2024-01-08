@@ -18,8 +18,6 @@ public class bullet : MonoBehaviour
     {
         if (collision.gameObject.tag=="Enemy")
         {
-            Debug.Log("Hit");
-
             collision.gameObject.GetComponent<Rigidbody2D>().AddForce(collision.gameObject.transform.forward * GameSetData.Damage);
             Destroy(BulletPrefab);
         }

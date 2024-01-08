@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public enum MonsterBulletType
@@ -8,14 +6,11 @@ public enum MonsterBulletType
     Spread
 }
 
-
 [CreateAssetMenu(fileName = "MonsterBullet", menuName = "New Monster Bullet")]
 public class MonsterBulletData : ScriptableObject
 {
     [Header("Info")]
-    public MonsterBulletType type;    
+    public MonsterBulletType type;
     public float speed;
-    public int BulletNumber;  
-
-
+    public int BulletNumber;
 }

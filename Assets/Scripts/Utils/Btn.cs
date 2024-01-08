@@ -6,6 +6,7 @@ public class Btn : MonoBehaviour
     {
         GameManager.Instance.Retry1();
     }
+
     public void RetryGame2()
     {
         GameManager.Instance.Retry2();

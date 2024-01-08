@@ -43,8 +43,6 @@ public class BossShooting : MonoBehaviour
             yield return StartCoroutine(ShootBounceBullet());
             ShootBounceBullet();
             yield return new WaitForSeconds(5f);
-
-
         }
     }
 
@@ -104,6 +102,7 @@ public class BossShooting : MonoBehaviour
 
         }
     }
+
     IEnumerator DestroyBulletAfterDelay(GameObject newBullet)
     {
         yield return new WaitForSeconds(5f);

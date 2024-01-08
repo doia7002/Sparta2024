@@ -5,6 +5,7 @@ public class BossMovement : MonoBehaviour
 {
     public float moveSpeed = 2f;
     private Vector2 tagetPosition;
+
     void Start()
     {
         StartCoroutine(MoveBoss());

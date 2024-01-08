@@ -3,6 +3,7 @@ using UnityEngine;
 public class Bomb : MonoBehaviour
 {
     private float speed;
+    private float lifeTime = 5.0f;
     private Vector2 direction;
 
     private Rigidbody2D _rigidbody;
@@ -26,7 +27,16 @@ public class Bomb : MonoBehaviour
         
         _rigidbody.velocity = direction.normalized * speed;
     }
-    
+
+    void Update()
+    {
+        lifeTime -= Time.deltaTime;
+        if (lifeTime <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")

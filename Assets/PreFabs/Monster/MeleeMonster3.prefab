@@ -133,6 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterData: {fileID: 11400000, guid: fa4baf04a01bcc84c97deff1f3ab49c1, type: 2}
+  GameSetData: {fileID: 11400000, guid: f9bc70d6659fcaa42aa2ec2c2c084d84, type: 2}
 --- !u!50 &7766735020600481179
 Rigidbody2D:
   serializedVersion: 4
@@ -218,3 +219,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterData: {fileID: 11400000, guid: fa4baf04a01bcc84c97deff1f3ab49c1, type: 2}
+  level: 0

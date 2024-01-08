@@ -23,12 +23,11 @@ public class LevelSelectBtn : MonoBehaviour
     public void SelectLevel()
     {
         SetGameSetSO();
-        SceneManager.LoadScene("TestScene");
+        SceneManager.LoadScene("Stage1");
     }
     
     private void SetGameSetSO()
     {
         Enum.TryParse(_buttonText.text, out GameSetData.Type);
-        //Àû¿ë ¾ÈµÆÀ½
     }
 }

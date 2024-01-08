@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TopDownMovement : MonoBehaviour
@@ -36,5 +34,4 @@ public class TopDownMovement : MonoBehaviour
 
         _rigidbody.velocity = direction;
     }
-    
 }

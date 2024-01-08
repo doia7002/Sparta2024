@@ -1,20 +1,16 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
     public MonsterData monsterData;
+    public GameSetSO GameSetData;
 
     private int currentHp;
-    
     
     private void Start()
     {
         currentHp = monsterData.maxhp;
-        
     }
-
-    
 
     private void OnTriggerEnter2D(Collider2D collider )
     {
@@ -23,11 +19,8 @@ public class Monster : MonoBehaviour
         {
             
             Destroy(collider.gameObject);
-            TakeDamage(10); // 10이 캐릭터SO 공격력 넣기
+            TakeDamage(GameSetData.Damage); // 10이 캐릭터SO 공격력 넣기
         }
-
-        
-
     }
 
     void OnDestroy()
@@ -37,18 +30,10 @@ public class Monster : MonoBehaviour
             GameManager.Instance.StageEnd(DeadCase.bossDead);
             GameManager.Instance.AddScore(50);
         }
+
         if (gameObject.CompareTag("Enemy"))
         {
             GameManager.Instance.AddScore(10);
-        }
-        
-
-        float dropChance = 1f;
-        float randomValue = Random.value;
-
-        if (randomValue <= dropChance)
-        {
-            GameManager.Instance.SpawnItem(transform.position);
         }
     }
 
@@ -60,15 +45,18 @@ public class Monster : MonoBehaviour
         {
             Die();
         }
-        
     }
 
     public void Die()
-    {       
-        //폭탄호출
+    {
+        float dropChance = 1f;
+        float randomValue = Random.value;
+
+        if (randomValue <= dropChance)
+        {
+            GameManager.Instance.SpawnItem(transform.position);
+        }
+
         Destroy(gameObject);
     }
-
-
-   
 }

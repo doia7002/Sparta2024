@@ -11,6 +11,8 @@ TagManager:
   - Bomb
   - HorizontalWall
   - VerticalWall
+  - PanelCanvas
+  - GameUI
   layers:
   - Default
   - TransparentFX

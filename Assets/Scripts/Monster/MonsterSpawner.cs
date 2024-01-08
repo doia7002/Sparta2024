@@ -20,6 +20,7 @@ public class MonsterSpawner : MonoBehaviour
             SpawnMonster();
             yield return new WaitForSeconds(spawnInterval);
             spawnCount++;
+
             if (spawnCount > 3)
                 break;
         }

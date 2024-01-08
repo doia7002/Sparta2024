@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -19,21 +18,26 @@ public enum DeadCase
 public class GameManager : MonoBehaviour
 {
     public Level level;
-    public static GameManager Instance;    
-    public GameObject PausePanel;
-    public GameObject EndPanel;    
-    public GameObject ImageObject;
-    public GameObject ItemPrefab;
-    public Text ThisScoreTxt;
-    public Text MaxScoreTxt;
+    public static GameManager Instance;
+
+    private GameObject PausePanel;
+    private GameObject EndPanel;
+    private GameObject ImageObject;
+    private GameObject ItemPrefab;
+    private Text MaxScoreTxt;
+    private Text ThisScoreTxt;
+    [SerializeField] private GameSetSO _gameSetData;
 
     private TopDownCharacterController _controller;
-    [SerializeField] private GameSetSO _gameSetData;
     
-    float StartTime;
-    int TotalScore;
+    private GameObject _panelCanvas;
+    private GameObject _gameUI;
+    private Text _pointText;
+
+    private float _startTime;
+    private int _totalScore;
     
-    void Awake()
+    private void Awake()
     {
         if (Instance == null)
         {
@@ -45,17 +49,24 @@ public class GameManager : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
 
+        _controller = GetComponent<TopDownCharacterController>();
         level = _gameSetData.Level;
-        GameObject Boss = GameObject.FindGameObjectWithTag("Boss");
-        GameObject Player = GameObject.FindGameObjectWithTag("Player");
-    }
 
-    void Start()
-    {
+        _panelCanvas = GameObject.FindGameObjectWithTag("PanelCanvas");
+        _gameUI = GameObject.FindGameObjectWithTag("GameUI");
+
+        PausePanel = _panelCanvas.transform.GetChild(0).gameObject;
+        EndPanel = _panelCanvas.transform.GetChild(1).gameObject;
+        ImageObject = EndPanel.transform.GetChild(0).gameObject;
+        ItemPrefab = Resources.Load<GameObject>("Items/Bomb");
+        MaxScoreTxt = EndPanel.transform.GetChild(4).GetComponent<Text>();
+        ThisScoreTxt = EndPanel.transform.GetChild(6).GetComponent<Text>();
+        _pointText = _gameUI.transform.GetChild(1).GetComponent<Text>();
+
         _controller.OnPauseEvent += ActiveEndPanel;
     }
-    
-    void Update()
+
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -63,16 +74,13 @@ public class GameManager : MonoBehaviour
         }
         ActiveEndPanel();
     }
-    bool HasTenSecondsPassed()
-    {
-        return (Time.time - StartTime) >= 11f; // 게임 시작 후 10초가 지났는지 확인
-    }
 
     public void ActiveEndPanel()
     {
         Time.timeScale = 0f;
         EndPanel.SetActive(true);
     }
+
     public void StageEnd(DeadCase deadvalue)
     {
         if (deadvalue == DeadCase.bossDead) // player dead
@@ -88,43 +96,40 @@ public class GameManager : MonoBehaviour
 
         if (PlayerPrefs.HasKey("bestscore") == false)
         {
-            PlayerPrefs.SetFloat("bestscore", TotalScore);
+            PlayerPrefs.SetFloat("bestscore", _totalScore);
         }
         else
         {
-            if (TotalScore > PlayerPrefs.GetFloat("bestscore"))
+            if (_totalScore > PlayerPrefs.GetFloat("bestscore"))
             {
-                PlayerPrefs.SetFloat("bestscore", TotalScore);
+                PlayerPrefs.SetFloat("bestscore", _totalScore);
             }
         }
 
-        ThisScoreTxt.text = TotalScore.ToString();
+        ThisScoreTxt.text = _totalScore.ToString();
         float maxScore = PlayerPrefs.GetFloat("bestscore");
         MaxScoreTxt.text = maxScore.ToString("N2");
     }
-
 
     public void AddScore(int Score)
     {
         if (ThisScoreTxt != null)
         {
-            TotalScore += Score;
-            ThisScoreTxt.text = TotalScore.ToString();
+            _totalScore += Score;
+            ThisScoreTxt.text = _totalScore.ToString();
+            _pointText.text = _totalScore.ToString();
         }
     }
 
     public void SpawnItem(Vector3 position)
     {
         if (ItemPrefab != null)
-        {            
-                       
+        {
             GameObject newItem = Instantiate(ItemPrefab, position, Quaternion.identity);
-            
         }
     }
-    
 
-    void Pause()
+    private void Pause()
     {
         Time.timeScale = 0f;
         PausePanel.SetActive(true);
@@ -156,21 +161,5 @@ public class GameManager : MonoBehaviour
     public void Exit()
     {
         SceneManager.LoadScene("StartScene");
-    }
-
-    public void ChooseDifficulty()
-    {
-        if(level == Level.basic)
-        {
-            //basic씬 선택해서 로드
-        }
-        else if(level == Level.standard)
-        {
-            // normal씬 선택해서 로드
-        }
-        else if (level == Level.challenge)
-        {
-            //hard씬 선택해서 로드
-        }
     }
 }

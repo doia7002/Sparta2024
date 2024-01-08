@@ -3,7 +3,14 @@ guid: b1ed6628396bb1e46a609d30fd4f70ad
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - PausePanel: {instanceID: 0}
+  - EndPanel: {instanceID: 0}
+  - ImageObject: {instanceID: 0}
+  - ItemPrefab: {instanceID: 0}
+  - ThisScoreTxt: {instanceID: 0}
+  - MaxScoreTxt: {instanceID: 0}
+  - _gameSetData: {fileID: 11400000, guid: f9bc70d6659fcaa42aa2ec2c2c084d84, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

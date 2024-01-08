@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterData: {fileID: 11400000, guid: a21215351f9b4a448b5c068250de6a48, type: 2}
+  GameSetData: {fileID: 11400000, guid: f9bc70d6659fcaa42aa2ec2c2c084d84, type: 2}
 --- !u!50 &3646690286982284463
 Rigidbody2D:
   serializedVersion: 4

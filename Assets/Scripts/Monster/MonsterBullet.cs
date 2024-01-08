@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-
 
 public class MonsterBullet : MonoBehaviour
 {
@@ -30,9 +26,7 @@ public class MonsterBullet : MonoBehaviour
         InvokeRepeating("ShootBullet", startDelay, endDelay);
     }
 
-   
-   
-   void ShootBullet()
+    void ShootBullet()
     {
         float x = _monsterTransform.position.x;
         float y = _monsterTransform.position.y - 2.0f;
@@ -43,9 +37,4 @@ public class MonsterBullet : MonoBehaviour
         GameObject bullet = Instantiate(Bullet, _monsterTransform.position, Quaternion.identity);
         bullet.GetComponent<Rigidbody2D>().velocity = direction * speed;
     }
-
-
 }
-    
-
-
