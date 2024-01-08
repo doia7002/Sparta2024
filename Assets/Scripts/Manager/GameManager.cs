@@ -36,14 +36,15 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
         DontDestroyOnLoad(gameObject);
-
+        
         level = Level.basic;
+        GameObject Boss = GameObject.FindGameObjectWithTag("Boss");
+        GameObject Player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Start()
     {
-        GameObject Boss = GameObject.FindGameObjectWithTag("Boss");
-        GameObject Player = GameObject.FindGameObjectWithTag("Player");
+        
         //Transform parentTransform = GameObject.Find("Canvas").transform;
         //Transform childTransform = parentTransform.Find("자식객체이름");
     }
