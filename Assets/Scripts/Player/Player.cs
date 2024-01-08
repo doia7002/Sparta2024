@@ -14,6 +14,15 @@ public class Player : MonoBehaviour
         {
             PlayerActive.SetActive(false);
             GameManager.Instance.StageEnd(DeadCase.playerDead);
+        }       
+    }
+
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Bossbullet"))
+        {
+            PlayerActive.SetActive(false);
+            GameManager.Instance.StageEnd(DeadCase.playerDead);
         }
     }
 }
