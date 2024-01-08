@@ -12,7 +12,7 @@ public class Monster1Movement : MonoBehaviour
 
         if (transform.position.y < -10f)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }

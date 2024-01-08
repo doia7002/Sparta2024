@@ -113,8 +113,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 7966660917103218758, guid: 18dfc0614cf38c54387ce44d8fd9dd7c, type: 3}
+  objectManager: {fileID: 9133455634018325232, guid: 30e3951d1597abd479d42b76a36c6e66, type: 3}
   bulletSpeed: 10
   attackInterval: 0.5
+  bulletCount: 20
+  rotationSpeed: 5
+  waveFrequency: 2
+  amplitude: 3
 --- !u!50 &-4032593302134514914
 Rigidbody2D:
   serializedVersion: 4

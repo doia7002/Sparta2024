@@ -3,6 +3,7 @@ using UnityEngine;
 public class bullet : MonoBehaviour
 {
     public GameSetSO GameSetData;
+
     public GameObject BulletPrefab;
     
     void Update()
@@ -18,6 +19,7 @@ public class bullet : MonoBehaviour
         if (collision.gameObject.tag=="Enemy")
         {
             Debug.Log("Hit");
+
             collision.gameObject.GetComponent<Rigidbody2D>().AddForce(collision.gameObject.transform.forward * GameSetData.Damage);
             Destroy(BulletPrefab);
         }

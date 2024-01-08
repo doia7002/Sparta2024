@@ -5,14 +5,15 @@ public enum UINumber
     backImage,
     start,
     playerSelect,
-    level
+    level,
+    score
 }
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
 
-    private GameObject[] _UIs = new GameObject[4];
+    private GameObject[] _UIs = new GameObject[5];
 
     void Awake()
     {
@@ -33,6 +34,7 @@ public class UIManager : MonoBehaviour
         _UIs[1] = transform.GetChild((int)UINumber.start).gameObject;
         _UIs[2] = transform.GetChild((int)UINumber.playerSelect).gameObject;
         _UIs[3] = transform.GetChild((int)UINumber.level).gameObject;
+        _UIs[4] = transform.GetChild((int)UINumber.score).gameObject;
     }
 
     public void ChangeUI(UINumber currentUI, UINumber nextUI)
