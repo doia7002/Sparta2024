@@ -1,12 +1,9 @@
 using UnityEngine;
-using TMPro;
 
 public class BombManager : Singleton<BombManager>
 {
     private GameObject[] _bombs = new GameObject[4];
     private int _bombsCount;
-    
-    [SerializeField] private GameObject _bombPrefab;
 
     // Start is called before the first frame update
     private void Start()
@@ -34,7 +31,7 @@ public class BombManager : Singleton<BombManager>
     
     public void GetBomb()
     {
-        if (_bombsCount < 4)
+        if (_bombsCount <= 4)
         {
             _bombs[_bombsCount - 1].SetActive(true);
             _bombsCount++;
