@@ -3,7 +3,9 @@ guid: 34761cda5d5ddc64c8d2fefc41deb1d4
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - _gameSetData: {fileID: 11400000, guid: f9bc70d6659fcaa42aa2ec2c2c084d84, type: 2}
+  - PlayerActive: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
