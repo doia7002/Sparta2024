@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1648272439673615180}
   - component: {fileID: 1860432981051539113}
   - component: {fileID: 913615860976302424}
+  - component: {fileID: 4018006918077216329}
   m_Layer: 0
   m_Name: Item
   m_TagString: Untagged
@@ -101,9 +102,8 @@ MonoBehaviour:
   destroyOnPickup: 1
   canBePickupBy:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 256
   PowerUpValue: 10
-  playerData: {fileID: 0}
 --- !u!61 &913615860976302424
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -149,3 +149,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &4018006918077216329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2826594485640385112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fd66164b6e51554b9a14462c78251ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fallSpeed: 1
+  lifeTime: 5
