@@ -3,8 +3,6 @@ using TMPro;
 
 public class BombManager : Singleton<BombManager>
 {
-    //public static BombManager Instance;
-    
     private GameObject[] _bombs = new GameObject[4];
     private int _bombsCount;
     
@@ -14,18 +12,6 @@ public class BombManager : Singleton<BombManager>
     private int _point;
     public TMP_Text PointText;
     // end of field for unit test
-    
-    //private void Awake()
-    //{
-    //    if (Instance == null)
-    //    {
-    //        Instance = this;
-    //    }
-    //    else
-    //    {
-    //        Destroy(Instance);
-    //    }
-    //}
     
     // Start is called before the first frame update
     private void Start()
@@ -57,12 +43,10 @@ public class BombManager : Singleton<BombManager>
         {
             _bombs[_bombsCount - 1].SetActive(true);
             _bombsCount++;
-            Debug.Log($"{_bombsCount}");
         }
         else
         {
             BombToPoint();
-            Debug.Log($"{_bombsCount}");
         }
     }
     
