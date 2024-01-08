@@ -19,7 +19,10 @@ public class GameSetSO : ScriptableObject
     public Sprite SpriteImage;
 	public int Damage = 10;
     public int BombCount = 3;
-    public int Score = 0;
+
+    [Header("Score")]
+    public int CurScore = 0;
+    public int BestScore = 0;
 
     [Header("Difficulty")]
     public Level Level;
