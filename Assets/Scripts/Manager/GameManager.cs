@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public enum Level
 {
@@ -27,16 +28,31 @@ public class GameManager : MonoBehaviour
     private Text MaxScoreTxt;
     private Text ThisScoreTxt;
     [SerializeField] private GameSetSO _gameSetData;
-
-    private TopDownCharacterController _controller;
     
     private GameObject _panelCanvas;
     private GameObject _gameUI;
-    private Text _pointText;
-
-    private float _startTime;
+    private TMP_Text _pointText;
     private int _totalScore;
     
+    private void GameInit()
+    {
+        level = _gameSetData.Level;
+        
+
+        _panelCanvas = GameObject.FindGameObjectWithTag("PanelCanvas");
+        Debug.Log($"{_panelCanvas.gameObject.name}");
+        _gameUI = GameObject.FindGameObjectWithTag("GameUI");
+        Debug.Log($"{_gameUI.gameObject.name}");
+
+        PausePanel = _panelCanvas.transform.GetChild(0).gameObject;
+        EndPanel = _panelCanvas.transform.GetChild(1).gameObject;
+        ImageObject = EndPanel.transform.GetChild(0).gameObject;
+        ItemPrefab = Resources.Load<GameObject>("Items/Bomb");
+        MaxScoreTxt = EndPanel.transform.GetChild(4).GetComponent<Text>();
+        ThisScoreTxt = EndPanel.transform.GetChild(6).GetComponent<Text>();
+        _pointText = _gameUI.transform.GetChild(1).GetComponent<TMP_Text>();
+    }
+
     private void Awake()
     {
         if (Instance == null)
@@ -49,33 +65,19 @@ public class GameManager : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
 
-        _controller = GetComponent<TopDownCharacterController>();
-        level = _gameSetData.Level;
-
-        _panelCanvas = GameObject.FindGameObjectWithTag("PanelCanvas");
-        _gameUI = GameObject.FindGameObjectWithTag("GameUI");
-
-        PausePanel = _panelCanvas.transform.GetChild(0).gameObject;
-        EndPanel = _panelCanvas.transform.GetChild(1).gameObject;
-        ImageObject = EndPanel.transform.GetChild(0).gameObject;
-        ItemPrefab = Resources.Load<GameObject>("Items/Bomb");
-        MaxScoreTxt = EndPanel.transform.GetChild(4).GetComponent<Text>();
-        ThisScoreTxt = EndPanel.transform.GetChild(6).GetComponent<Text>();
-        _pointText = _gameUI.transform.GetChild(1).GetComponent<Text>();
-
-        _controller.OnPauseEvent += ActiveEndPanel;
+        GameInit();
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Pause();
-        }
-        ActiveEndPanel();
-    }
+    //private void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.Escape))
+    //    {
+    //        Pause();
+    //        ActiveEndPanel();
+    //    }
+    //}
 
-    public void ActiveEndPanel()
+    private void ActiveEndPanel()
     {
         Time.timeScale = 0f;
         EndPanel.SetActive(true);
@@ -129,7 +131,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void Pause()
+    public void Pause()
     {
         Time.timeScale = 0f;
         PausePanel.SetActive(true);
@@ -137,7 +139,8 @@ public class GameManager : MonoBehaviour
 
     public void NextGame()
     {
-        SceneManager.LoadScene("MapScene 1");
+        SceneManager.LoadScene("Stage2");
+        GameInit();
     }
 
     public void Resume()
@@ -148,13 +151,17 @@ public class GameManager : MonoBehaviour
 
     public void Retry1()
     {
-        SceneManager.LoadScene("MapScene");
+        BombManager.Instance.BombInit();
+        SceneManager.LoadScene("Stage1");
+        GameInit();
         Resume();
     }
 
     public void Retry2()
     {
-        SceneManager.LoadScene("MapScene 1");
+        BombManager.Instance.BombInit();
+        SceneManager.LoadScene("Stage2");
+        GameInit();
         Resume();
     }
 
