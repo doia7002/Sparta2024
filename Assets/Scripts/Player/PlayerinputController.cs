@@ -22,8 +22,13 @@ public class PlayerInputController : TopDownCharacterController
         IsAttacking = value.isPressed;
     }
 
-    public void OnItem(InputValue value) 
+    public void OnItem() 
     {
-        UsingItem = value.isPressed;
+        BombManager.Instance.UseBomb();
+    }
+
+    public void OnPause()
+    {
+        GameManager.Instance.Pause();
     }
 }

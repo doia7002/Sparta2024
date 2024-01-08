@@ -25,12 +25,12 @@
                 },
                 {
                     "name": "Item",
-                    "type": "Value",
+                    "type": "Button",
                     "id": "99e5cbcf-f595-4dc0-9bdd-f8c719b49885",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": true
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Pause",

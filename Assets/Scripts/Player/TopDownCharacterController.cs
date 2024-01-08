@@ -5,8 +5,6 @@ public class TopDownCharacterController : MonoBehaviour
 {
     public event Action<Vector2> OnMoveEvent;
     public event Action OnAttackEvent;
-    public event Action OnItemEvent;
-    public event Action OnPauseEvent;
 
     public GameObject _enemyBullet { get; set; }
 
@@ -41,14 +39,5 @@ public class TopDownCharacterController : MonoBehaviour
     public void CallAttackEvent()
     { 
         OnAttackEvent?.Invoke();
-    }
-    public void CallItemEvent()
-    {
-        OnItemEvent?.Invoke();
-    }
-
-    public void CallPauseEvent()
-    {
-        OnPauseEvent?.Invoke();
     }
 }

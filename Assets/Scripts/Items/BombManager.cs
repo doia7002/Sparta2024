@@ -8,20 +8,6 @@ public class BombManager : Singleton<BombManager>
     
     [SerializeField] private GameObject _bombPrefab;
 
-    private TopDownCharacterController _controller;
-
-    // field for unit test
-    private int _point;
-    public TMP_Text PointText;
-    // end of field for unit test
-
-    private void Awake()
-    {
-        _controller = GetComponent<TopDownCharacterController>();
-
-        _controller.OnItemEvent += UseBomb;
-    }
-
     // Start is called before the first frame update
     private void Start()
     {
