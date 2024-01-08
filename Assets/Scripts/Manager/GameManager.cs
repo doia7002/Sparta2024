@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
     private void GameInit()
     {
         level = _gameSetData.Level;
-        
+        _totalScore = _gameSetData.Score;
 
         _panelCanvas = GameObject.FindGameObjectWithTag("PanelCanvas");
         Debug.Log($"{_panelCanvas.gameObject.name}");
@@ -66,16 +66,8 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         GameInit();
+        Resume();
     }
-
-    //private void Update()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.Escape))
-    //    {
-    //        Pause();
-    //        ActiveEndPanel();
-    //    }
-    //}
 
     private void ActiveEndPanel()
     {
@@ -94,6 +86,7 @@ public class GameManager : MonoBehaviour
         else if (deadvalue == DeadCase.playerDead) // player dead
         {
             ActiveEndPanel();
+            ImageObject.SetActive(false);
         }
 
         if (PlayerPrefs.HasKey("bestscore") == false)
@@ -139,8 +132,8 @@ public class GameManager : MonoBehaviour
 
     public void NextGame()
     {
+        Debug.Log("NextGame");
         SceneManager.LoadScene("Stage2");
-        GameInit();
     }
 
     public void Resume()
@@ -153,16 +146,12 @@ public class GameManager : MonoBehaviour
     {
         BombManager.Instance.BombInit();
         SceneManager.LoadScene("Stage1");
-        GameInit();
-        Resume();
     }
 
     public void Retry2()
     {
         BombManager.Instance.BombInit();
         SceneManager.LoadScene("Stage2");
-        GameInit();
-        Resume();
     }
 
     public void Exit()
