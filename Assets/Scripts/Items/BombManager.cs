@@ -31,10 +31,10 @@ public class BombManager : Singleton<BombManager>
     
     public void GetBomb()
     {
-        if (_bombsCount <= 4)
+        if (_bombsCount < 4)
         {
-            _bombs[_bombsCount - 1].SetActive(true);
             _bombsCount++;
+            _bombs[_bombsCount - 1].SetActive(true);
         }
         else
         {
