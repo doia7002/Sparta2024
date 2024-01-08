@@ -8,7 +8,7 @@ public class LevelSelectBtn : MonoBehaviour
 {
     public GameSetSO GameSetData;
     private TMP_Text _buttonText;
-
+    
     private void Start()
     {
         Image levelImage = transform.parent.GetChild(0).GetComponent<Image>();
@@ -19,13 +19,13 @@ public class LevelSelectBtn : MonoBehaviour
         _buttonText = GetComponentInChildren<TMP_Text>();
         _buttonText.text = levelSpriteName;
     }
-
+    
     public void SelectLevel()
     {
         SetGameSetSO();
         SceneManager.LoadScene("TestScene");
     }
-
+    
     private void SetGameSetSO()
     {
         Enum.TryParse(_buttonText.text, out GameSetData.Type);
