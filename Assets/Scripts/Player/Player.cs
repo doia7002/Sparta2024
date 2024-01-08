@@ -6,9 +6,9 @@ public class Player : MonoBehaviour
 {
     public GameObject PlayerActive;
 
-    public void OnCollisionEnter2D(Collision2D collision)
+    public void IsTriggerEnter2D(Collider2D collider)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (collider.gameObject.tag == "Enemy")
         {
             PlayerActive.SetActive(false);
             Debug.Log("Damaged");

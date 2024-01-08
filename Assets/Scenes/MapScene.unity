@@ -2884,11 +2884,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
-  PausePanel: {fileID: 0}
-  EndPanel: {fileID: 0}
-  ImageObject: {fileID: 0}
-  ThisScoreTxt: {fileID: 0}
-  MaxScoreTxt: {fileID: 0}
+  PausePanel: {fileID: 1388529888}
+  EndPanel: {fileID: 2054264740}
+  ImageObject: {fileID: 1829887606}
+  ThisScoreTxt: {fileID: 87260277}
+  MaxScoreTxt: {fileID: 1260844071}
   Life: 3
 --- !u!4 &1671451885
 Transform:
