@@ -10,6 +10,12 @@ public enum Level
     challenge
 }
 
+public enum DeadCase
+{
+    playerDead = 0,
+    bossDead
+}
+
 public class GameManager : MonoBehaviour
 {
     public Level level;
@@ -20,11 +26,13 @@ public class GameManager : MonoBehaviour
     public GameObject ItemPrefab;
     public Text ThisScoreTxt;
     public Text MaxScoreTxt;
+
+    private TopDownCharacterController _controller;
+    [SerializeField] private GameSetSO _gameSetData;
     
     float StartTime;
     int TotalScore;
     
-
     void Awake()
     {
         if (Instance == null)
@@ -36,17 +44,15 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
         DontDestroyOnLoad(gameObject);
-        
-        level = Level.basic;
+
+        level = _gameSetData.Level;
         GameObject Boss = GameObject.FindGameObjectWithTag("Boss");
         GameObject Player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Start()
     {
-        
-        //Transform parentTransform = GameObject.Find("Canvas").transform;
-        //Transform childTransform = parentTransform.Find("자식객체이름");
+        _controller.OnPauseEvent += ActiveEndPanel;
     }
     
     void Update()
@@ -61,20 +67,23 @@ public class GameManager : MonoBehaviour
     {
         return (Time.time - StartTime) >= 11f; // 게임 시작 후 10초가 지났는지 확인
     }
+
     public void ActiveEndPanel()
     {
-                
-
-        if (HasTenSecondsPassed()&&GameObject.FindGameObjectWithTag("Boss")==null) // boss dead
+        Time.timeScale = 0f;
+        EndPanel.SetActive(true);
+    }
+    public void StageEnd(DeadCase deadvalue)
+    {
+        if (deadvalue == DeadCase.bossDead) // player dead
         {
-            Time.timeScale = 0f;
-            EndPanel.SetActive(true);
+            ActiveEndPanel();
             ImageObject.SetActive(true);
         }
-        else if (GameObject.FindGameObjectWithTag("Player") == null) // player dead
+
+        else if (deadvalue == DeadCase.playerDead) // player dead
         {
-            Time.timeScale = 0f;
-            EndPanel.SetActive(true);
+            ActiveEndPanel();
         }
 
         if (PlayerPrefs.HasKey("bestscore") == false)
@@ -94,10 +103,14 @@ public class GameManager : MonoBehaviour
         MaxScoreTxt.text = maxScore.ToString("N2");
     }
 
+
     public void AddScore(int Score)
     {
-        TotalScore += Score;
-        ThisScoreTxt.text = TotalScore.ToString();
+        if (ThisScoreTxt != null)
+        {
+            TotalScore += Score;
+            ThisScoreTxt.text = TotalScore.ToString();
+        }
     }
 
     public void SpawnItem(Vector3 position)
@@ -142,7 +155,7 @@ public class GameManager : MonoBehaviour
 
     public void Exit()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("StartScene");
     }
 
     public void ChooseDifficulty()

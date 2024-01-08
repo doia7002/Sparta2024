@@ -10,8 +10,7 @@ public class BossShooting : MonoBehaviour
     //public ObjectManager objectManager;
 
     public GameObject bulletPrefab2;
-    public ObjectManager objectManager;
-    public float bulletSpeed = 10f;
+    public ObjectManager objectManager;    
 
     public float attackInterval = 1f;
     public int bulletCount = 20;
@@ -97,7 +96,7 @@ public class BossShooting : MonoBehaviour
             float bulletAngleInRadians = angle * Mathf.Deg2Rad;
             GameObject newBullet = Instantiate(bulletPrefab2, transform.position, Quaternion.identity);
             Rigidbody2D bulletRigidbody = newBullet.GetComponent<Rigidbody2D>();
-            bulletRigidbody.velocity = new Vector2(Mathf.Cos(bulletAngleInRadians), Mathf.Sin(bulletAngleInRadians)) * bulletSpeed;
+            bulletRigidbody.velocity = new Vector2(Mathf.Cos(bulletAngleInRadians), Mathf.Sin(bulletAngleInRadians)) * (monsterBulletData.speed + (int)level);
 
             StartCoroutine(DestroyBulletAfterDelay(newBullet));
 

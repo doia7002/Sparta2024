@@ -10,13 +10,10 @@ public class Player : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.isTrigger)
-        {            
-         PlayerActive.SetActive(false);
-            
-         
+        {
+            PlayerActive.SetActive(false);
+            GameManager.Instance.StageEnd(DeadCase.playerDead);
         }
-        
-
     }
 
 
