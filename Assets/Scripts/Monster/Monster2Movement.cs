@@ -6,8 +6,11 @@ public class Monster2Movement : MonoBehaviour
     public MonsterData monsterData;
     private Vector2 targetPosition;
 
+    public Level level;
+
     void Start()
     {
+        level = GameManager.Instance.level;
         StartCoroutine(MoveRandomly());
     }
 
@@ -31,6 +34,6 @@ public class Monster2Movement : MonoBehaviour
 
     void MoveToTarget()
     {
-        transform.position = Vector2.Lerp(transform.position, targetPosition, monsterData.speed * Time.deltaTime);
+        transform.position = Vector2.Lerp(transform.position, targetPosition, (monsterData.speed + 0.5f * (int)level) * Time.deltaTime);
     }
 }
