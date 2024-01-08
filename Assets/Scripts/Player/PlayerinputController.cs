@@ -28,7 +28,7 @@ public class PlayerInputController : TopDownCharacterController
 
     public void OnItem(InputValue value) 
     {
-        //Debug.Log("OnItem"+value.ToString());
+        Debug.Log("OnItem" + value.ToString());
         UsingItem = value.isPressed;
     }
 }
