@@ -5,7 +5,7 @@ using UnityEngine;
 public class BossShooting2 : BossShooting
 {
     public GameObject bulletPrefab2;
-    void Start()
+    void Awake()
     {
         level = GameManager.Instance.level;
         StartCoroutine(AttackPatternRoutine2());

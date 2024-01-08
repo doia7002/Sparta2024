@@ -17,7 +17,7 @@ public class BossShooting : MonoBehaviour
     public float waveFrequency = 2f;
     public float amplitude = 3f;
     
-    void Start()
+    void Awake()
     {
         level = GameManager.Instance.level;
         StartCoroutine(AttackPatternRoutine());

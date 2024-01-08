@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
     private void GameInit()
     {
         level = _gameSetData.Level;
-        _totalScore = _gameSetData.Score;
+        _totalScore = _gameSetData.CurScore;
 
         _panelCanvas = GameObject.FindGameObjectWithTag("PanelCanvas");
         Debug.Log($"{_panelCanvas.gameObject.name}");
@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
 
         GameInit();
         Resume();
@@ -110,6 +110,7 @@ public class GameManager : MonoBehaviour
     {
         if (ThisScoreTxt != null)
         {
+            _gameSetData.CurScore += Score;
             _totalScore += Score;
             ThisScoreTxt.text = _totalScore.ToString();
             _pointText.text = _totalScore.ToString();
@@ -144,18 +145,21 @@ public class GameManager : MonoBehaviour
 
     public void Retry1()
     {
+        _gameSetData.CurScore = 0;
         BombManager.Instance.BombInit();
         SceneManager.LoadScene("Stage1");
     }
 
     public void Retry2()
     {
+        _gameSetData.CurScore = 0;
         BombManager.Instance.BombInit();
         SceneManager.LoadScene("Stage2");
     }
 
     public void Exit()
     {
+        _gameSetData.CurScore = 0;
         SceneManager.LoadScene("StartScene");
     }
 }
