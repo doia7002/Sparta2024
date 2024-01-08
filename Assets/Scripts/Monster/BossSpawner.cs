@@ -15,6 +15,7 @@ public class BossSpawner : MonoBehaviour
         float positionY = Screen.height;
 
         Vector3 spawnPosition = Camera.main.ScreenToWorldPoint(new Vector2(randomX, positionY));
+        spawnPosition.z = 0f;
 
         Instantiate(bossMonsterPrefab, spawnPosition, Quaternion.identity);
     }

@@ -3,7 +3,9 @@ guid: 5d8a7b085377fad4091f6dc8fcee7ac3
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - monsterPrefab: {instanceID: 0}
+  - monsterPrefab2: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
