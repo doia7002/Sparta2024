@@ -5,9 +5,9 @@ using TMPro;
 
 public enum Level
 {
-    basic = 1,
-    standard,
-    challenge
+    Basic = 1,
+    Standard,
+    Challenge
 }
 
 public enum DeadCase
@@ -51,6 +51,8 @@ public class GameManager : MonoBehaviour
         MaxScoreTxt = EndPanel.transform.GetChild(4).GetComponent<Text>();
         ThisScoreTxt = EndPanel.transform.GetChild(6).GetComponent<Text>();
         _pointText = _gameUI.transform.GetChild(1).GetComponent<TMP_Text>();
+
+        _pointText.text = _totalScore.ToString();
     }
 
     private void Awake()

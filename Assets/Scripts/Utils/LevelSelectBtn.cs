@@ -18,6 +18,7 @@ public class LevelSelectBtn : MonoBehaviour
 
         _buttonText = GetComponentInChildren<TMP_Text>();
         _buttonText.text = levelSpriteName;
+        Debug.Log($"{_buttonText.text}");
     }
     
     public void SelectLevel()
@@ -28,6 +29,6 @@ public class LevelSelectBtn : MonoBehaviour
     
     private void SetGameSetSO()
     {
-        Enum.TryParse(_buttonText.text, out GameSetData.Type);
+        Enum.TryParse(_buttonText.text, out GameSetData.Level);
     }
 }
