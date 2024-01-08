@@ -8,7 +8,7 @@ public class MonsterSpawner : MonoBehaviour
     public float spawnInterval = 3f;
     private int spawnCount = 0;
 
-    void Start()
+    void Awake()
     {
         StartCoroutine(SpawnMonsterRepeatedly());
     }
