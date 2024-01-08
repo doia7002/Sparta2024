@@ -3,17 +3,19 @@ using UnityEngine;
 
 public class BossShooting : MonoBehaviour
 {
+    public MonsterBulletData monsterBulletData;
+    public Level level;
     public GameObject bulletPrefab;
-    public ObjectManager objectManager;
-    public float bulletSpeed = 10f;
+    //public ObjectManager objectManager;
     public float attackInterval = 1f;
     public int bulletCount = 20;
     public float rotationSpeed = 5f;
     public float waveFrequency = 2f;
     public float amplitude = 3f;
-
+    
     void Start()
     {
+        level = GameManager.Instance.level;
         StartCoroutine(AttackPatternRoutine());
     }
 
@@ -42,7 +44,7 @@ public class BossShooting : MonoBehaviour
             float angle = i * (360f / bulletCount);
             Vector3 direction = Quaternion.Euler(0f, 0f, angle) * Vector3.up;
             GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-            bullet.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
+            bullet.GetComponent<Rigidbody2D>().velocity = direction * (monsterBulletData.speed + (int)level);
         }
     }
 
@@ -57,7 +59,7 @@ public class BossShooting : MonoBehaviour
             GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
 
             Vector3 direction = (playerPosition - transform.position).normalized;
-            bullet.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
+            bullet.GetComponent<Rigidbody2D>().velocity = direction * (monsterBulletData.speed + (int)level);
         }
     }
 
@@ -70,7 +72,7 @@ public class BossShooting : MonoBehaviour
             Vector3 direction = Quaternion.Euler(0f, 0f, angle) * Vector3.up;
             Vector3 spawnPosition = transform.position + new Vector3(0f, yOffset, 0f);
             GameObject bullet = Instantiate(bulletPrefab, spawnPosition, Quaternion.identity);
-            bullet.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
+            bullet.GetComponent<Rigidbody2D>().velocity = direction * (monsterBulletData.speed + (int)level);
         }
     }
 }

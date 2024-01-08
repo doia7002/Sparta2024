@@ -13,17 +13,17 @@ public class MonsterBullet : MonoBehaviour
 
     private Transform _monsterTransform;
     private Transform _playerTransform;
-    
-  
+
+    public Level level;
 
     private void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
 
-        Level difficulty = GameManager.Instance.level;
+        level = GameManager.Instance.level;
 
-        int startDelay = 5 - (int)difficulty;
-        int endDelay = 3 - (int)difficulty;
+        int startDelay = 5 - (int)level;
+        int endDelay = 3 - (int)level;
 
         _monsterTransform = RangeMonster.GetComponent<Transform>();
         _playerTransform = Player.GetComponent<Transform>();
@@ -38,7 +38,7 @@ public class MonsterBullet : MonoBehaviour
         float y = _monsterTransform.position.y - 2.0f;
         
         Vector3 direction = (_playerTransform.position - _monsterTransform.position).normalized;
-        float speed = monsterBulletData.speed;
+        float speed = monsterBulletData.speed + (int)level * 0.5f;
 
         GameObject bullet = Instantiate(Bullet, _monsterTransform.position, Quaternion.identity);
         bullet.GetComponent<Rigidbody2D>().velocity = direction * speed;
