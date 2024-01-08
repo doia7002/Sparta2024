@@ -5,7 +5,7 @@ using UnityEngine;
 public class BossSpawner : MonoBehaviour
 {
     public GameObject bossMonsterPrefab;
-    private float bossSpawnDelay = 10f;
+    private float bossSpawnDelay = 0f;
 
     void Start()
     {   
